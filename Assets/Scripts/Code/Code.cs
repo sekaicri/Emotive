@@ -13,7 +13,7 @@ public class Code : MonoBehaviour
     [SerializeField]
     private InputField input;
     [ContextMenu("GenerateRandomCode")]
-    private void GenerateRandomCode() {
+    public void GenerateRandomCode() {
         int length = 5;
         const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder token = new StringBuilder();

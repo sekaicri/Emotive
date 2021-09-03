@@ -10,7 +10,4 @@ public class PrefabsPoint : MonoBehaviour
     [SerializeField]
     public Button point;
 
-
-
-
 }

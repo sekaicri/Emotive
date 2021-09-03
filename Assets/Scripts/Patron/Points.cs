@@ -15,15 +15,16 @@ public class Points : MonoBehaviour
     public List<List<GameObject>> listNueva = new List<List<GameObject>>();
 
 
-
     public void Patron( )
     {
         if (Num.Instance.temp < xy) {
 
             num.num.text = Num.Instance.temp.ToString();
             point.interactable = false;
+            Draw.Instance.DrawLine(point);
         }
-        Num.Instance.Enum();
+        Num.Instance.Enum(xy);
+
     }
 
 }

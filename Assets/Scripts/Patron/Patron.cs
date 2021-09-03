@@ -24,15 +24,13 @@ public class Patron : MonoBehaviour
     public List<List<PrefabsPoint>> planeList = new List<List<PrefabsPoint>>();
 
 
-
-
     public void CreatePlane()
     {
         foreach (List<PrefabsPoint> item in planeList)
         {
             foreach (PrefabsPoint item1 in item)
             {
-                DestroyImmediate(item1);
+                DestroyImmediate(item1.gameObject);
             }
         }
 
@@ -50,31 +48,42 @@ public class Patron : MonoBehaviour
             PrefabsPoint patron = Instantiate(point, transform);
             plane.Add(patron);
             planeList.Add(plane);
-
         }
     }
 
-    [ContextMenu("hola")]
 
-    public void Verificar()
+    public void Check()
     {
-        StringBuilder token = new StringBuilder();
-        List<int> numerosGuardados = new List<int>();
+        List<int> numSave = new List<int>();
         foreach (List<PrefabsPoint> item in planeList)
         {
             foreach (PrefabsPoint item1 in item)
             {
-               string num = item1.num.text.ToString();
-               int hola = int.Parse(num);
-               token.Append(hola);           
+                string num = item1.num.text.ToString();
+                int tempt = int.Parse(num);
+                numSave.Add(tempt);
             }
         }
 
-        Debug.Log(token);
-      
-          
-        
 
+         int temp = 0;
+        for (int i = 0; i < patronView.xy; i++)
+        {
+            if (numSave[i] == patronView.save[i]) {
+                temp++;
+            }
+        }
+     
+        if (temp==patronView.xy)
+        {
+            Debug.Log("correcto papi");
+        }
+        else 
+        {
+            Debug.Log("incorrecto papi");
+            CreatePlane();
+            Num.Instance.temp = 0;
+        }
     }
 
 }

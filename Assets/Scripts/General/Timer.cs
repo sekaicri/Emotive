@@ -18,9 +18,10 @@ public class Timer : MonoBehaviour
 
     [SerializeField]
     private ElementIdentifier main;
-
     [SerializeField]
     private ElementIdentifier final;
+    [SerializeField]
+    private ElementIdentifier patron;
 
     public void StartTimer()
     {
@@ -36,13 +37,14 @@ public class Timer : MonoBehaviour
         CancelInvoke();
         InterfaceManager.Instance.ShowScreen(final);
         InterfaceManager.Instance.HideScreen(main);
+        InterfaceManager.Instance.HideScreen(patron);
 
     }
 
     private void UpdateTimer()
     {
         s--;
-        if (s <= 0) {
+        if (s == 0) {
 
             if (m == 0)
             {

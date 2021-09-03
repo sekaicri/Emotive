@@ -17,12 +17,15 @@ MonoBehaviour:
     - categoryName: MainMenu
       itemNames:
       - ~Element Name~
+      - Code
       - Final
       - History
       - Login
       - MainMenu
       - MainPrincipal
       - MyAccount
+      - Notification
+      - Patron
       - Register
       - Start
       isExpanded:

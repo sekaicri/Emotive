@@ -14,9 +14,8 @@ public class PatronView : MonoBehaviour
 
     [SerializeField]
     private PrefabsPoint prefabPoint;
-
-    [SerializeField]
-    public int x, y;
+    [HideInInspector]
+    public int x=0, y=0;
 
 
     [SerializeField]
@@ -25,18 +24,22 @@ public class PatronView : MonoBehaviour
 
     public int xy;
 
-
     public List<List<GameObject>> planeList = new List<List<GameObject>>();
 
-    List<int> guardados = new List<int>();
+    public List<int> save = new List<int>();
 
 
-    private void Start()
+
+    [ContextMenu("Holi")]
+
+    public void StartPatron()
     {
+        Num.Instance.temp = 0;
+        x = Random.Range(3, 4);
+        y = Random.Range(3, 4);
         xy = x * y;
-
         layaout.constraintCount = x;
-
+        Rando8();
     }
     private void CreatePlane()
     {
@@ -55,37 +58,34 @@ public class PatronView : MonoBehaviour
 
         for (int i = 0; i < xy; i++)
         {
-            prefabPoint.num.text = guardados[i].ToString();
+            prefabPoint.num.text = save[i].ToString();
             List<GameObject> plane = new List<GameObject>();
             GameObject patron1 = Instantiate(point, transform);
             plane.Add(patron1);
             planeList.Add(plane);
         }
+
     }
 
-   // [EasyButtons.Button()]
+    // [EasyButtons.Button()]
 
-[ContextMenu("Holi")]
     private void Rando8()
     {
 
-        List<int> numerosGuardados = new List<int>();
+        List<int> numSave = new List<int>();
         int posicionAleatoria;
         for (int i = 0; i < xy; i++)
         {
             do
             {
                 posicionAleatoria = Random.Range(0, xy);
-            } while (numerosGuardados.Contains(posicionAleatoria));
-            numerosGuardados.Add(posicionAleatoria);
+            } while (numSave.Contains(posicionAleatoria));
+            numSave.Add(posicionAleatoria);
         }
 
-
-       
-        guardados = numerosGuardados;
-
-        CreatePlane();
+        save = numSave;
         patron.CreatePlane();
+        CreatePlane();
     }
 
 
