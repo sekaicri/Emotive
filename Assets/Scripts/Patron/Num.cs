@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Num : MonoBehaviour
 {
 
     public static Num Instance { get; private set; }
     public int temp = 0;
-
     public UnityEvent unityEvent;
+
+
+
 
     private void Awake()
     {
@@ -25,10 +28,13 @@ public class Num : MonoBehaviour
     public void Enum(int xy)
     {
         temp++;
-        if (temp == xy) {
+        if (temp == xy)
+        {
 
             unityEvent.Invoke();
         }
-   
+
     }
+
+
 }

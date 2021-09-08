@@ -1,0 +1,8 @@
+-Azul
+0555FA
+-Azul claro
+41B9E6
+-Fucsia
+FF0F5D
+-Verde claro
+55BE5A

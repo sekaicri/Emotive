@@ -30,56 +30,74 @@ public class Incidents : MonoBehaviour
     private Text textfailure;
     [SerializeField]
     private Text textMaintenance;
-   
 
-    [ContextMenu("holi")]
+    public List<Sprite> Sprite { get => sprite; set => sprite = value; }
+
     public void StartGame()
     {
         mision = UnityEngine.Random.Range(10, 16);
-        decimal  num = (mision / 4);
+        decimal num = (mision / 4);
         num = Math.Floor(num);
 
         for (int s = 0; s < 4; s++) { 
 
-            int i = 0;
-
-            do
+        int i = 0;
+        do
+        {
+            int trans = UnityEngine.Random.Range(0, 15);
+            if (images[trans].State1 == true)
             {
-                int trans = UnityEngine.Random.Range(0, 15);
-                PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
-                if (images[trans].State1 == true)
-                {
-                    i--;
-                }
-                else
-                {
-                    tempInstantiate.Incidents(sprite[s]);
-                    tempInstantiate.SetupParent();
-                }
-                i++; 
+                i--;
             }
-            while (i < num);
+            else
+            {
+                    PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
+                    tempInstantiate.Incidents(Sprite[s], s);
+                    tempInstantiate.SetupParent();
+            }
+            i++;
         }
-
+        while (i < num);
+    }
 
         decimal numnew = mision - (num*4);
         for (int s = 0; s < numnew; s++) {
             int trans = UnityEngine.Random.Range(0, 15);
-            PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
               if (images[trans].State1 == true)
                 {
                     s--;
                 }
                 else
                 {
-                    tempInstantiate.Incidents(sprite[UnityEngine.Random.Range(0, 4)]);
-                    tempInstantiate.SetupParent();
+                int temp = UnityEngine.Random.Range(0, 4);
+                PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
+                tempInstantiate.Incidents(Sprite[temp], temp);
+                tempInstantiate.SetupParent();
+                switch (temp)
+                {
+                    case 0:
+                        environmentalDamage++;
+                        break;
+                    case 1:
+                        unexpected++;
+                        break;
+                    case 2:
+                        failure++;
+                        break;
+                    case 3:
+                        maintenance++;
+                        break;
+                    default:
+                        break;
                 }
+            }
         }
 
-
-
-
+        textEnvironmentalDamage.text = ($"{envir}/{num+ environmentalDamage}");
+        textUnexpected.text = ($"{unexpe}/{num+ unexpected}");
+        textfailure.text = ($"{failu}/{num+ failure}");
+        textMaintenance.text = ($"{mainte}/{num+ maintenance}");
+        Debug.Log(mision);
     }
 
 

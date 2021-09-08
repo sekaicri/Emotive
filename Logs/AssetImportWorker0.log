@@ -1,0 +1,210 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.15f2 (6cf78cb77498) revision 7141260'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19043.1165; Version 2009; 64bit' Language: 'es' Physical Memory: 6102 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.15f2\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Hitomi/Desktop/Proyecto/Emotiv/Emotiv/Emotive
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+57648
+Successfully changed project path to: C:/Users/Hitomi/Desktop/Proyecto/Emotiv/Emotiv/Emotive
+C:/Users/Hitomi/Desktop/Proyecto/Emotiv/Emotiv/Emotive
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 89.37 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.15f2 (6cf78cb77498)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Hitomi/Desktop/Proyecto/Emotiv/Emotiv/Emotive/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: NVIDIA GeForce 210  (ID=0xa65)
+    Vendor:   
+    VRAM:     972 MB
+    Driver:   21.21.13.4201
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56044
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002638 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 82.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  4.762 seconds
+Domain Reload Profiling:
+	ReloadAssembly (4762ms)
+		BeginReloadAssembly (75ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (658ms)
+			LoadAssemblies (72ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (217ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (274ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (83ms)
+				BeforeProcessingInitializeOnLoad (21ms)
+				ProcessInitializeOnLoadAttributes (120ms)
+				ProcessInitializeOnLoadMethodAttributes (44ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.021368 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.275 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2276ms)
+		BeginReloadAssembly (212ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (1971ms)
+			LoadAssemblies (134ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (497ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (161ms)
+			SetupLoadedEditorAssemblies (677ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (149ms)
+				ProcessInitializeOnLoadAttributes (499ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (10ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1831 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.6 MB.
+System memory in use after: 84.7 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 2269.
+Total: 2.796400 ms (FindLiveObjects: 0.201500 ms CreateObjectMapping: 0.076500 ms MarkObjects: 2.385200 ms  DeleteObjects: 0.131500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/emotiv_elementos/barras/barras/variable_enfoque.png
+  artifactKey: Guid(828d2dec86c09ba4ea5a508ea6285bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_enfoque.png using Guid(828d2dec86c09ba4ea5a508ea6285bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb27b978ab7b9da7917534267ba28f07') in 0.197074 seconds 
+  Import took 0.202079 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000299 seconds.
+  path: Assets/emotiv_elementos/barras/barras/barra_azul_full.png
+  artifactKey: Guid(ad677055bb3295d4fa214f3b7ee57beb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/barra_azul_full.png using Guid(ad677055bb3295d4fa214f3b7ee57beb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a97d3777b63c59d6a2ffcc833f73265') in 0.050200 seconds 
+  Import took 0.054138 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000304 seconds.
+  path: Assets/emotiv_elementos/barras/barras/barra_rojo_full.png
+  artifactKey: Guid(e21bd97d58282e3449058f1e20fc5a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/barra_rojo_full.png using Guid(e21bd97d58282e3449058f1e20fc5a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '263bfa692d16733e9bfc3961a62b937a') in 0.065268 seconds 
+  Import took 0.069840 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/emotiv_elementos/barras/barras/variable_relajacion_blur_1.png
+  artifactKey: Guid(3559076b20b947a47a525657e1f82ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_relajacion_blur_1.png using Guid(3559076b20b947a47a525657e1f82ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79b4da9d024888ae55177c5dfa2ecbd4') in 0.058289 seconds 
+  Import took 0.064394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/emotiv_elementos/barras/barras/variable_estrés_blur.png
+  artifactKey: Guid(2268248a88f4f5941b2a713e03220080) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_estrés_blur.png using Guid(2268248a88f4f5941b2a713e03220080) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36f3c27a786057b5fc34a409724eb11d') in 0.109582 seconds 
+  Import took 0.114229 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/emotiv_elementos/barras/barras/barra_verde_full.png
+  artifactKey: Guid(1a9ee68aa47bd03428b7439501422704) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/barra_verde_full.png using Guid(1a9ee68aa47bd03428b7439501422704) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '345b841892c7f1ed6d24a0cd9d73c495') in 0.078358 seconds 
+  Import took 0.086337 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/emotiv_elementos/barras/barras/variable_estrés.png
+  artifactKey: Guid(2360f8037f2431a4a8def1fb4ac7d517) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_estrés.png using Guid(2360f8037f2431a4a8def1fb4ac7d517) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce2f6018f0a9c00dd0ec26e6868baddb') in 0.077664 seconds 
+  Import took 0.083420 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/emotiv_elementos/barras/barras/variable_enfoque_blur.png
+  artifactKey: Guid(4610ad563f4f0b74aba31b41f6dfec65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_enfoque_blur.png using Guid(4610ad563f4f0b74aba31b41f6dfec65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4b310816bd55dbf31a89853989f0c1c') in 0.093696 seconds 
+  Import took 0.098475 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000283 seconds.
+  path: Assets/emotiv_elementos/barras/barras/variable_relajacion.png
+  artifactKey: Guid(6b3f6582012be854fb9d230538f02b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_relajacion.png using Guid(6b3f6582012be854fb9d230538f02b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec0e2802790a7d2ce914a7adc817cd17') in 0.033109 seconds 
+  Import took 0.047715 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003532 seconds.
+  path: Assets/emotiv_elementos/barras/barras/variable_relajacion.png
+  artifactKey: Guid(6b3f6582012be854fb9d230538f02b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/emotiv_elementos/barras/barras/variable_relajacion.png using Guid(6b3f6582012be854fb9d230538f02b65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec0e2802790a7d2ce914a7adc817cd17') in 0.033052 seconds 
+  Import took 0.038910 seconds .
+

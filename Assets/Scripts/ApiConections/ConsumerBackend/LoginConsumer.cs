@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,13 +12,13 @@ public class LoginConsumer : MonoBehaviour
     [SerializeField]
     private LoginResponse response;
     [SerializeField]
-    private InputField email1;
+    private TMP_InputField email1;
     [SerializeField]
-    private InputField password1;
+    private TMP_InputField password1;
     [SerializeField]
     private UnityEvent succeededLogin;
     [SerializeField]
-    private Text name;
+    private TMP_Text name;
 
     public string Email { get => email; set => email = value; }
     public string Password { get => password; set => password = value; }
@@ -57,7 +58,7 @@ public class LoginConsumer : MonoBehaviour
             succeededLogin.Invoke();
             UserData.Instance.usuario = this.response.usuario;
             UserData.Instance.items = this.response.items;
-            name.text = $" ¡Bienvenido! {UserData.Instance.usuario.name}";
+            name.text = $" ¡BIENVENIDO! {UserData.Instance.usuario.name}";
          
          
 

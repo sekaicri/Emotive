@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,9 +14,11 @@ public class RegisterConsumer : MonoBehaviour
     [SerializeField]
     private LoginResponse response;
     [SerializeField]
-    private InputField email1, password1,name1, lastname1 ;
+    private TMP_InputField email1, password1,name1, lastname1 ;
     [SerializeField]
     private UnityEvent succeededRegister;
+    [SerializeField]
+    private TMP_Text name2;
 
 
     [ContextMenu("probar registro")]
@@ -53,6 +56,8 @@ public class RegisterConsumer : MonoBehaviour
             this.response = JsonConvert.DeserializeObject<LoginResponse>(response);
             succeededRegister.Invoke();
             UserData.Instance.usuario = this.response.usuario;
+            name2.text = $" ¡BIENVENIDO! {UserData.Instance.usuario.name}";
+
 
         }
         else
