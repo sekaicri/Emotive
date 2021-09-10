@@ -30,8 +30,6 @@ public class PatronView : MonoBehaviour
 
 
 
-    [ContextMenu("Holi")]
-
     public void StartPatron()
     {
         Num.Instance.temp = 0;

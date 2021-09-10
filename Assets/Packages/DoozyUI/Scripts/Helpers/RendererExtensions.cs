@@ -10,7 +10,7 @@ public static class RendererExtensions
     /// Counts the bounding box corners of the given RectTransform that are visible from the given Camera in screen space.
     /// </summary>
     /// <returns>The amount of bounding box corners that are visible from the Camera.</returns>
-    /// <param name="rectTransform">Rect transform.</param>
+    /// <param name="rectTransform">Rect transform1.</param>
     /// <param name="camera">Camera.</param>
     public static int CountCornersVisibleFrom(this RectTransform rectTransform, Camera camera)
     {
@@ -36,7 +36,7 @@ public static class RendererExtensions
     /// Works by checking if each bounding box corner of this RectTransform is inside the cameras screen space view frustrum.
     /// </summary>
     /// <returns><c>true</c> if is fully visible from the specified camera; otherwise, <c>false</c>.</returns>
-    /// <param name="rectTransform">Rect transform.</param>
+    /// <param name="rectTransform">Rect transform1.</param>
     /// <param name="camera">Camera.</param>
     public static bool IsFullyVisibleFrom(this RectTransform rectTransform, Camera camera)
     {
@@ -48,7 +48,7 @@ public static class RendererExtensions
     /// Works by checking if any bounding box corner of this RectTransform is inside the cameras screen space view frustrum.
     /// </summary>
     /// <returns><c>true</c> if is at least partially visible from the specified camera; otherwise, <c>false</c>.</returns>
-    /// <param name="rectTransform">Rect transform.</param>
+    /// <param name="rectTransform">Rect transform1.</param>
     /// <param name="camera">Camera.</param>
     public static bool IsVisibleFrom(this RectTransform rectTransform, Camera camera)
     {

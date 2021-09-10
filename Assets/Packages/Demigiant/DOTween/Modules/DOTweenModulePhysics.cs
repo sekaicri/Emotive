@@ -128,7 +128,7 @@ namespace DG.Tweening
         /// Also stores the Rigidbody as the tween's target so it can be used for filtered operations.
         /// <para>NOTE: to tween a rigidbody correctly it should be set to kinematic at least while being tweened.</para>
         /// <para>BEWARE: doesn't work on Windows Phone store (waiting for Unity to fix their own bug).
-        /// If you plan to publish there you should use a regular transform.DOPath.</para></summary>
+        /// If you plan to publish there you should use a regular transform1.DOPath.</para></summary>
         /// <param name="path">The waypoints to go through</param>
         /// <param name="duration">The duration of the tween</param>
         /// <param name="pathType">The type of path: Linear (straight path) or CatmullRom (curved CatmullRom path)</param>
@@ -153,7 +153,7 @@ namespace DG.Tweening
         /// Also stores the Rigidbody as the tween's target so it can be used for filtered operations
         /// <para>NOTE: to tween a rigidbody correctly it should be set to kinematic at least while being tweened.</para>
         /// <para>BEWARE: doesn't work on Windows Phone store (waiting for Unity to fix their own bug).
-        /// If you plan to publish there you should use a regular transform.DOLocalPath.</para></summary>
+        /// If you plan to publish there you should use a regular transform1.DOLocalPath.</para></summary>
         /// <param name="path">The waypoint to go through</param>
         /// <param name="duration">The duration of the tween</param>
         /// <param name="pathType">The type of path: Linear (straight path) or CatmullRom (curved CatmullRom path)</param>

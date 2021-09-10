@@ -6,6 +6,7 @@ using UnityEngine;
 public class Details
 {
     public int affected;
+    public int num=0;
     public string error;
     public string service;
     public string severity;

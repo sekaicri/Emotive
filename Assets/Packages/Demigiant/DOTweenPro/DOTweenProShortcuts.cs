@@ -24,7 +24,7 @@ namespace DG.Tweening
         #region Transform
 
         /// <summary>Tweens a Transform's localPosition in a spiral shape.
-        /// Also stores the transform as the tween's target so it can be used for filtered operations</summary>
+        /// Also stores the transform1 as the tween's target so it can be used for filtered operations</summary>
         /// <param name="duration">The duration of the tween</param>
         /// <param name="axis">The axis around which the spiral will rotate</param>
         /// <param name="mode">The type of spiral movement</param>
@@ -56,7 +56,7 @@ namespace DG.Tweening
         #region Rigidbody
 
         /// <summary>Tweens a Rigidbody's position in a spiral shape.
-        /// Also stores the transform as the tween's target so it can be used for filtered operations</summary>
+        /// Also stores the transform1 as the tween's target so it can be used for filtered operations</summary>
         /// <param name="duration">The duration of the tween</param>
         /// <param name="axis">The axis around which the spiral will rotate</param>
         /// <param name="mode">The type of spiral movement</param>

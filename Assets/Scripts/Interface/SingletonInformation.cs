@@ -9,11 +9,13 @@ public class SingletonInformation : MonoBehaviour
 
     public static SingletonInformation Instance { get; private set; }
     [SerializeField]
-    private Text severity;
+    public Text severity;
     [SerializeField]
     private Text information;
     [SerializeField]
     public Button start;
+    [SerializeField]
+    public Transform fail,fail1;
 
 
 

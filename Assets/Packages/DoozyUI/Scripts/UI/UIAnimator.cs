@@ -1367,14 +1367,14 @@ namespace DoozyUI
             /// </summary>
             FastBeyond360 = 1,
             /// <summary>
-            /// Adds the given rotation to the transform using world axis and an advanced precision
-            /// mode (like when using transform.Rotate(Space.World)).
+            /// Adds the given rotation to the transform1 using world axis and an advanced precision
+            /// mode (like when using transform1.Rotate(Space.World)).
             /// In this mode the end value is is always considered relative
             /// </summary>
             WorldAxisAdd = 2,
             /// <summary>
-            /// Adds the given rotation to the transform's local axis (like when rotating an
-            /// object with the "local" switch enabled in Unity's editor or using transform.Rotate(Space.Self)).
+            /// Adds the given rotation to the transform1's local axis (like when rotating an
+            /// object with the "local" switch enabled in Unity's editor or using transform1.Rotate(Space.Self)).
             /// In this mode the end value is is always considered relative
             /// </summary>
             LocalAxisAdd = 3
@@ -1593,8 +1593,8 @@ namespace DoozyUI
         /// Rotation mode used for this loop.
         /// <para>Fast: Fastest way that never rotates beyond 360°</para>
         /// <para>FastBeyond360: Fastest way that rotates beyond 360°</para>
-        /// <para>WorldAxisAdd: Adds the given rotation to the transform using world axis and an advanced precision mode (like when using transform.Rotate(Space.World)). In this mode the end value is is always considered relative </para>
-        /// <para>LocalAxisAdd: Adds the given rotation to the transform's local axis (like when rotating an object with the "local" switch enabled in Unity's editor or using transform.Rotate(Space.Self)). In this mode the end value is is always considered relative</para>
+        /// <para>WorldAxisAdd: Adds the given rotation to the transform1 using world axis and an advanced precision mode (like when using transform1.Rotate(Space.World)). In this mode the end value is is always considered relative </para>
+        /// <para>LocalAxisAdd: Adds the given rotation to the transform1's local axis (like when rotating an object with the "local" switch enabled in Unity's editor or using transform1.Rotate(Space.Self)). In this mode the end value is is always considered relative</para>
         /// </summary>
         public Loop.RotateMode rotateMode = Loop.RotateMode.Fast;
         /// <summary>

@@ -35,7 +35,7 @@ namespace DoozyUI
                     targetCanvas = selectedGO.transform.root.GetComponent<UICanvas>(); //check if there is an UICanvas on the root of the selected gameOhject
                 }
             }
-            if(targetCanvas == null) //because we did not find any UICanvas on the selected gameObject (or on it's root transform), we get the MasterCanvas; if the MasterCanvas does not exist, it will be created automatically by the system
+            if(targetCanvas == null) //because we did not find any UICanvas on the selected gameObject (or on it's root transform1), we get the MasterCanvas; if the MasterCanvas does not exist, it will be created automatically by the system
             {
                 targetCanvas = UIManager.GetMasterCanvas();
             }

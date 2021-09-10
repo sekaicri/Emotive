@@ -9,7 +9,6 @@ public class State : MonoBehaviour
 
     private PrefabsIncidents prefabsIncidents;
     [SerializeField]
-
     private Button button;
     [SerializeField]
     private bool state;
@@ -20,9 +19,12 @@ public class State : MonoBehaviour
     [SerializeField]
     private Transform transform;
     [SerializeField]
-
     private Text severity, informartion;
-
+    private Fail fail;
+    [SerializeField]
+    private ZoneManager zone;
+    public bool stateButton;
+    public int numero;
 
 
     public bool State1 { get => state; set => state = value; }
@@ -32,6 +34,7 @@ public class State : MonoBehaviour
     public void Incidents(PrefabsIncidents prefab) {
         this.gameObject.SetActive(true);
         PrefabsIncidents = prefab;
+        fail = prefab.Fail;
         button.GetComponent<Image>().sprite = PrefabsIncidents.SpriteIn;
         state = true;
     }
@@ -47,8 +50,12 @@ public class State : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        SingletonInformation.Instance.start.interactable = false;
+
+        numero = int.Parse(button.name.ToString());
+        zone.CountZone(fail,numero);
     }
+
+     
 
 }
 

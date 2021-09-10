@@ -77,6 +77,9 @@ public class Patron : MonoBehaviour
         if (temp==patronView.xy)
         {
             Debug.Log("correcto papi");
+
+
+
         }
         else 
         {

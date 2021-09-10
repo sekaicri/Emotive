@@ -12,8 +12,7 @@ public class FailPrefab : MonoBehaviour
     public Image image;
     [SerializeField]
     public Text text;
+
     public List<Details> details = new List<Details>();
 
-
-    
 }

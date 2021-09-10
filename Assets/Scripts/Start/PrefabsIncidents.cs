@@ -8,9 +8,19 @@ public class PrefabsIncidents : MonoBehaviour
     private Sprite spriteIn;
     [SerializeField]
     private Fail fail;
-
     public Sprite SpriteIn { get => spriteIn; set => spriteIn = value; }
     public Fail Fail { get => fail; set => fail = value; }
+    [SerializeField]
+    public GameObject ButtonState;
+
+
+    private void Start()
+    {
+        ButtonState = transform.parent.gameObject;
+    }
+
+
+
 
     public void Incidents(Sprite sprite, int num) {
 
@@ -19,17 +29,17 @@ public class PrefabsIncidents : MonoBehaviour
         switch (num)
         {
             case 0:
-                fail = Fail.environmentalDamage;
+                fail = Fail.DAÑO_AMBIENTAL;
                 
                 break;
             case 1:
-                fail = Fail.unexpected;
+                fail = Fail.IMPREVISTO;
                 break;
             case 2:
-                fail = Fail.failure;
+                fail = Fail.FALLA;
                 break;
             case 3:
-                fail = Fail.maintenance;
+                fail = Fail.MANTENIMIENTO;
                 break;
             default:
                 break;
@@ -46,10 +56,10 @@ public class PrefabsIncidents : MonoBehaviour
 
 public enum Fail
 {
-    environmentalDamage,
-    unexpected,
-    failure,
-    maintenance
+    DAÑO_AMBIENTAL,
+    IMPREVISTO,
+    FALLA,
+    MANTENIMIENTO
 }
 
 
