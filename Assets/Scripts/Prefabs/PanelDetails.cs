@@ -9,7 +9,7 @@ public class PanelDetails : MonoBehaviour
     public Text affected;
     public string severity;
     public string information;
-    
+    public int id;
 
 
     public void Title() {

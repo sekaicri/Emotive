@@ -8,16 +8,18 @@ public class SingletonInformation : MonoBehaviour
 {
 
     public static SingletonInformation Instance { get; private set; }
+    public List<Button> Temp { get => temp; set => temp = value; }
+
     [SerializeField]
     public Text severity;
     [SerializeField]
-    private Text information;
+    public Text information;
     [SerializeField]
     public Button start;
     [SerializeField]
     public Transform fail,fail1;
-
-
+    [SerializeField]
+    private List<Button> temp;
 
 
     private void Awake()

@@ -34,7 +34,7 @@ public class ZoneManager : MonoBehaviour
 
 
     private State stateChild;
-    private int  n;
+    private int n;
 
     private Fail fail1;
 
@@ -106,6 +106,7 @@ public class ZoneManager : MonoBehaviour
             }
             patron.text.text = Fail.DAÑO_AMBIENTAL.ToString().Replace("_", " ");
             patron.score.text = ($"{envir}/{ environmentalDamage}");
+            patron.typeFail = Fail.DAÑO_AMBIENTAL;
             int i = 0;
 
             if (tempt.Count > 0)
@@ -140,6 +141,8 @@ public class ZoneManager : MonoBehaviour
                 patron.text.fontStyle = FontStyle.Bold;
             }
             patron.text.text = Fail.IMPREVISTO.ToString();
+            patron.typeFail = Fail.IMPREVISTO;
+
             patron.score.text = ($"{unexpe}/{ unexpected}");
             int i = 0;
 
@@ -176,6 +179,8 @@ public class ZoneManager : MonoBehaviour
             }
             
             patron.text.text = Fail.FALLA.ToString();
+            patron.typeFail = Fail.FALLA;
+
             patron.score.text = ($"{failu}/{failure}");
             int i = 0;
 
@@ -210,6 +215,8 @@ public class ZoneManager : MonoBehaviour
                 patron.text.fontStyle = FontStyle.Bold;
             }
             patron.text.text = Fail.MANTENIMIENTO.ToString();
+            patron.typeFail = Fail.MANTENIMIENTO;
+
             patron.score.text = ($"{mainte}/{ maintenance}");
             int i = 0;
 
@@ -241,13 +248,31 @@ public class ZoneManager : MonoBehaviour
 
     public void CreateAll()
     {
-        
+        List<State> temp = new List<State>();
+        Out current=new Out();
+        foreach (var item in state)
+        {
+            if (item.Fail == fail1)
+            {
+                temp.Add(item);
+            }
+        }
         foreach (Transform child in transform1)
         {
-
-           child.gameObject.GetComponent<Out>().CreateDetail(fail1,n);
+            if (child.GetComponent<FailPrefab>().typeFail == fail1)
+            {
+                current = child.GetComponent<Out>();
+            }
+            //  child.gameObject.GetComponent<Out>().CreateDetail(fail1,n);
 
         }
+
+      
+            for (int i = 0; i < temp.Count; i++)
+            {
+                current.Fail.details[i].num = temp[i].Numero;
+        }
+        current.CreateDetail(fail1, n);
 
     }
 

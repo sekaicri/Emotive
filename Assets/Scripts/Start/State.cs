@@ -24,17 +24,21 @@ public class State : MonoBehaviour
     [SerializeField]
     private ZoneManager zone;
     public bool stateButton;
-    public int numero;
+    [SerializeField]
+    private int numero =0;
+  
 
 
     public bool State1 { get => state; set => state = value; }
     public Zones CurrentZone { get => currentZone; set => currentZone = value; }
     public PrefabsIncidents PrefabsIncidents { get => prefabsIncidents; set => prefabsIncidents = value; }
+    public Fail Fail { get => fail; set => fail = value; }
+    public int Numero { get => numero; set => numero = value; }
 
     public void Incidents(PrefabsIncidents prefab) {
         this.gameObject.SetActive(true);
         PrefabsIncidents = prefab;
-        fail = prefab.Fail;
+        Fail = prefab.Fail;
         button.GetComponent<Image>().sprite = PrefabsIncidents.SpriteIn;
         state = true;
     }
@@ -50,9 +54,7 @@ public class State : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-
-        numero = int.Parse(button.name.ToString());
-        zone.CountZone(fail,numero);
+        zone.CountZone(Fail, Numero);
     }
 
      

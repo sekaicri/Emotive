@@ -1156,7 +1156,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 2076196934}
   stateButton: 0
-  numero: 0
+  numero: 9
 --- !u!1 &43737161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,7 +4598,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 1702205692}
   stateButton: 0
-  numero: 0
+  numero: 6
 --- !u!1 &89366716
 GameObject:
   m_ObjectHideFlags: 0
@@ -5473,7 +5473,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 1206679622}
   stateButton: 0
-  numero: 0
+  numero: 10
 --- !u!1 &171016202
 GameObject:
   m_ObjectHideFlags: 0
@@ -7946,7 +7946,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 1702205692}
   stateButton: 0
-  numero: 0
+  numero: 4
 --- !u!1 &274890240
 GameObject:
   m_ObjectHideFlags: 0
@@ -19870,7 +19870,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 1206679622}
   stateButton: 0
-  numero: 0
+  numero: 12
 --- !u!1 &734759376
 GameObject:
   m_ObjectHideFlags: 0
@@ -31454,7 +31454,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 2076196934}
   stateButton: 0
-  numero: 0
+  numero: 7
 --- !u!1 &1129827394
 GameObject:
   m_ObjectHideFlags: 0
@@ -34062,7 +34062,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 838027931}
   stateButton: 0
-  numero: 0
+  numero: 1
 --- !u!1 &1206679620
 GameObject:
   m_ObjectHideFlags: 0
@@ -34725,7 +34725,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 838027931}
   stateButton: 0
-  numero: 0
+  numero: 3
 --- !u!1 &1240270241
 GameObject:
   m_ObjectHideFlags: 0
@@ -36122,7 +36122,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 1702205692}
   stateButton: 0
-  numero: 0
+  numero: 5
 --- !u!1 &1246451637
 GameObject:
   m_ObjectHideFlags: 0
@@ -37409,7 +37409,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 843841931}
   stateButton: 0
-  numero: 0
+  numero: 15
 --- !u!1 &1354128467
 GameObject:
   m_ObjectHideFlags: 0
@@ -38830,7 +38830,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 843841931}
   stateButton: 0
-  numero: 0
+  numero: 13
 --- !u!1 &1410164395
 GameObject:
   m_ObjectHideFlags: 0
@@ -40968,7 +40968,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 838027931}
   stateButton: 0
-  numero: 0
+  numero: 2
 --- !u!1 &1557906460
 GameObject:
   m_ObjectHideFlags: 0
@@ -42281,7 +42281,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 843841931}
   stateButton: 0
-  numero: 0
+  numero: 14
 --- !u!1 &1627455773
 GameObject:
   m_ObjectHideFlags: 0
@@ -48635,7 +48635,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 1206679622}
   stateButton: 0
-  numero: 0
+  numero: 11
 --- !u!1 &1825665492
 GameObject:
   m_ObjectHideFlags: 0
@@ -58799,7 +58799,7 @@ MonoBehaviour:
   informartion: {fileID: 1473146043}
   zone: {fileID: 2076196934}
   stateButton: 0
-  numero: 0
+  numero: 8
 --- !u!1 &2139395733
 GameObject:
   m_ObjectHideFlags: 0
