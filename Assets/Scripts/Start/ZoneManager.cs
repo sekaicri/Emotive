@@ -75,6 +75,30 @@ public class ZoneManager : MonoBehaviour
         PrefabCreate();
     }
 
+    public void Points(Fail fail)
+    {
+
+        switch (fail)
+        {
+            case Fail.DAÑO_AMBIENTAL:
+                envir++;
+                break;
+            case Fail.IMPREVISTO:
+                unexpe++;
+                break;
+            case Fail.FALLA:
+                failu++;
+                break;
+            case Fail.MANTENIMIENTO:
+                mainte++;
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
 
     private void PrefabCreate()
     {

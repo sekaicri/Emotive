@@ -212,9 +212,7 @@ public class Incidents : MonoBehaviour
             case 1:
                 bonus = "100";
                 break;
-            case 0:
-                bonus = "50";
-                break;
+           
             default:
                 break;
         }

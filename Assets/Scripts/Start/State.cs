@@ -84,7 +84,9 @@ public class State : MonoBehaviour
         Complexity();
     }
 
-
+    public void Points() {
+        zone.Points(Fail);
+    }
     public void IncidentsPlaces()
     {
 

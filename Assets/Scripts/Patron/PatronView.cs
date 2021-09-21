@@ -92,10 +92,7 @@ public class PatronView : MonoBehaviour
 
         foreach (var s in listNew)
         {
-            
-            
                 s.point.interactable = true;
-            
         }
 
         again = false;
@@ -180,6 +177,9 @@ public class PatronView : MonoBehaviour
         if (Again == false)
         {
             StartCoroutine(Draw());
+        }
+        else {
+            lineRenderer.Points = new Vector2[1];
         }
 
 

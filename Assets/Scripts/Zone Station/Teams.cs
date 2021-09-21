@@ -91,6 +91,36 @@ public class Teams : MonoBehaviour
         interfaceGame.CodeInterface(); 
     }
 
+
+
+    public void Codex()
+    {
+
+        switch (severity)
+        {
+            case "BAJA":
+                button1.interactable = true;
+                button1.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                break;
+            case "MEDIA":
+                button2.interactable = true;
+                button2.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                break;
+            case "ALTA":
+                button3.interactable = true;
+                button3.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                break;
+            default:
+                break;
+        }
+        foreach (var s in texts)
+        {
+            s.fontStyle = TMPro.FontStyles.Normal;
+            s.fontSize = 35;
+        }
+    }
+
+
     public void TeamsEnd() {
         switch (severity)
         {

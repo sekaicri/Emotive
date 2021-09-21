@@ -144,6 +144,15 @@ public class Patron : MonoBehaviour
                     }
                 }
 
+                foreach (var s in SingletonInformation.Instance.states)
+                {
+                    if (states == s)
+                    {
+                        s.Points();
+
+                    }
+                }
+
                 ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
                 InAppNotification1.Instance.ShowNotication(notification);
                 Points.Points(fail);

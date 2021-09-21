@@ -18,6 +18,8 @@ public class RegisterConsumer : MonoBehaviour
     [SerializeField]
     private UnityEvent succeededRegister;
     [SerializeField]
+    private Toggle toggle1, toggle2;
+    [SerializeField]
     private TMP_Text name2;
 
 
@@ -35,7 +37,13 @@ public class RegisterConsumer : MonoBehaviour
             InAppNotification.Instance.ShowNotication(notification);
         }
 
-        else {
+        else if (toggle1.isOn && toggle2.isOn) {
+
+            ClassnNotification notification = new ClassnNotification(EnumNotification.ButtonOk, "Aceptar Terminos","Terminos" );
+            InAppNotification.Instance.ShowNotication(notification);
+        }
+        else
+        {
             StartCoroutine(AsyncPetition());
         }
     }

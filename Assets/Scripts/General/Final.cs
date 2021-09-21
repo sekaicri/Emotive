@@ -36,6 +36,8 @@ public class Final : MonoBehaviour
     private List<Sprite> Smile = new List<Sprite>();
     [SerializeField]
     private SaveProgressConsumer saveProgressConsumer;
+    [SerializeField]
+    private Image smileandsad;
     public void EndGame(string incidentes, string bonus, float stress, float focus, float relajate) {
         name.text = $"¡HA TERMINADO LA JORNADA! {UserData.Instance.usuario.name.ToUpper()}";
         points.text = pointsinScene.text;
@@ -49,14 +51,18 @@ public class Final : MonoBehaviour
         tstres.text = stress.ToString("0.#");
         tfocus.text = focus.ToString("0.#");
         trelajate.text = relajate.ToString("0.#");
+
         if (stress > 0.5)
         {
-            UserData.Instance.item.estado = 1;
+            UserData.Instance.item.estado = 0;
+            smileandsad.sprite = Smile[1];
         }
         else {
             UserData.Instance.item.estado = 1;
+            smileandsad.sprite = Smile[0];
 
         }
+
         UserData.Instance.item.puntos = int.Parse(points.text);
         UserData.Instance.item.incidencias = this.incidentes.text;
         UserData.Instance.item.estres = stress;

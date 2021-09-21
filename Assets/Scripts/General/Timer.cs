@@ -18,7 +18,8 @@ public class Timer : MonoBehaviour
     private Text timerText;
     [SerializeField]
     private Incidents incidents;
-    
+    [SerializeField]
+    private Alert alerta;
 
     public void StartTimer()
     {
@@ -49,11 +50,18 @@ public class Timer : MonoBehaviour
             if (m == 0)
             {
                 StopTimer();
+           
             }
 
             else {
                 m--;
                 s = 59;
+
+                int alert = UnityEngine.Random.Range(0, 11);
+                if (alert > 6)
+                {
+                    alerta.PlaySound();
+                }
             }
         }
         WriteTimer(m, s);

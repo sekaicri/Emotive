@@ -313,7 +313,15 @@ public class Cuadrilla : MonoBehaviour
 
     private IEnumerator CuadrillaHighEnd()
     {
-     
+
+        foreach (var s in SingletonInformation.Instance.states)
+        {
+            if (state == s)
+            {
+                s.Points();
+
+            }
+        }
 
         lr.color = Color.blue;
         yield return new WaitForSeconds(1);
@@ -344,10 +352,6 @@ public class Cuadrilla : MonoBehaviour
             yield return null;
         }
 
-        ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
-        InAppNotification1.Instance.ShowNotication(notification);
-
-        Score.ScorePoints("ALTA");
 
         equipo.gameObject.SetActive(false);
         equipo.interactable = false;
@@ -398,6 +402,12 @@ public class Cuadrilla : MonoBehaviour
                 s.interactable = false;
             }
         }
+ 
+        ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
+        InAppNotification1.Instance.ShowNotication(notification);
+
+        Score.ScorePoints("ALTA");
+
         Points.Points(failcua);
         interfaceGame.EndHig();
 
@@ -412,6 +422,17 @@ public class Cuadrilla : MonoBehaviour
 
     private void CuadrillaEnd()
     {
+
+
+
+        foreach (var s in SingletonInformation.Instance.states)
+        {
+            if (state == s)
+            {
+                s.Points();
+
+            }
+        }
 
         switch (severity)
         {
