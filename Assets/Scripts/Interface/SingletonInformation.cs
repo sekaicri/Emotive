@@ -8,7 +8,6 @@ public class SingletonInformation : MonoBehaviour
 {
 
     public static SingletonInformation Instance { get; private set; }
-    public List<Button> Temp { get => temp; set => temp = value; }
 
     [SerializeField]
     public Text severity;
@@ -19,7 +18,14 @@ public class SingletonInformation : MonoBehaviour
     [SerializeField]
     public Transform fail,fail1;
     [SerializeField]
-    private List<Button> temp;
+    public List<string> errors = new List<string>();
+    [SerializeField]
+    public List<string> services = new List<string>();
+    [SerializeField]
+    public List<State> states = new List<State>();
+    [SerializeField]
+    public Text monitoring;
+    public float probability;
 
 
     private void Awake()
@@ -40,6 +46,8 @@ public class SingletonInformation : MonoBehaviour
         severity.text = xy;
         information.text = x;
         start.interactable = true;
+        monitoring.text = "Para resolver el incidente inicie labores remotas.";
+
     }
 
 }

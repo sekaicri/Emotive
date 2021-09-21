@@ -68,7 +68,6 @@ public class InAppNotification : MonoBehaviour
                 Title.gameObject.SetActive(false);
                 break;
 
-
         }
         InterfaceManager.Instance.ShowScreen(Show);
     }

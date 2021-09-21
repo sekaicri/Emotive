@@ -58,6 +58,10 @@ public class RegisterConsumer : MonoBehaviour
             UserData.Instance.usuario = this.response.usuario;
             name2.text = $" ¡BIENVENIDO! {UserData.Instance.usuario.name}";
 
+            email1.text = "";
+            name1.text = "";
+            lastname1.text = "";
+            password1.text = "";
 
         }
         else

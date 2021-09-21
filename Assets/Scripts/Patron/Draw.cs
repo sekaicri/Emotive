@@ -40,20 +40,12 @@ public class Draw : MonoBehaviour
         else {
             lineRenderer.Points = pointlist.ToArray();
         }
+    }
+    public void eraserLine() {
+
+        lineRenderer.Points = new Vector2[1];
 
     }
 
-    public void Happy(Button points)
-    {
-        string Cristian= "";
-        if (Cristian == "solo")
-        {
-            Cristian = "Triste";
-        }
-
-        else {
-            Cristian = "Feliz";
-        }
-    }
 
 }

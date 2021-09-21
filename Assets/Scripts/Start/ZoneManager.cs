@@ -21,23 +21,11 @@ public class ZoneManager : MonoBehaviour
     private Incidents incidents;
     [SerializeField]
     private Transform transform1;
-    [SerializeField]
-    private List<string> errors = new List<string>();
-    [SerializeField]
-    private List<string> services = new List<string>();
-    [SerializeField]
-    List<Details> tempt = new List<Details>();
-    List<Details> tempt1 = new List<Details>();
-    List<Details> tempt2 = new List<Details>();
-    List<Details> tempt3 = new List<Details>();
-
-
-
     private State stateChild;
     private int n;
-
-    private Fail fail1;
-
+    private Fail failState;
+    [SerializeField]
+    private Out panel;
     private void Reset()
     {
         GetAllChildStates();
@@ -83,7 +71,7 @@ public class ZoneManager : MonoBehaviour
             }
         }
         this.n = n;
-        fail1 = fail;
+        failState = fail;
         PrefabCreate();
     }
 
@@ -93,7 +81,6 @@ public class ZoneManager : MonoBehaviour
         foreach (Transform child in transform1)
         {
             DestroyImmediate(child.gameObject);
-
         }
 
 
@@ -101,42 +88,20 @@ public class ZoneManager : MonoBehaviour
         {
             FailPrefab patron = Instantiate(failPrefab, transform1);
             patron.image.sprite = incidents.Sprite[0];
-            if (fail1 == Fail.DAÑO_AMBIENTAL) { 
+            if (failState == Fail.DAÑO_AMBIENTAL) { 
             patron.text.fontStyle = FontStyle.Bold;
             }
             patron.text.text = Fail.DAÑO_AMBIENTAL.ToString().Replace("_", " ");
             patron.score.text = ($"{envir}/{ environmentalDamage}");
             patron.typeFail = Fail.DAÑO_AMBIENTAL;
-            int i = 0;
-
-            if (tempt.Count > 0)
-            {
-                foreach (var s in tempt)
-                {
-                    patron.details.Add(s);
-                }
-            }
-            else
-            {
-
-                do
-                {
-                    var details = new Details();
-                    details.CreateDetails(errors[Random.Range(0, errors.Count)], services[Random.Range(0, services.Count)]);
-                    patron.details.Add(details);
-                    tempt.Add(details);
-
-                    i++;
-                }
-                while (i < environmentalDamage);
-            }
+          
         }
 
         if (unexpected > 0)
         {
             FailPrefab patron = Instantiate(failPrefab, transform1);
             patron.image.sprite = incidents.Sprite[1];
-            if (fail1 == Fail.IMPREVISTO)
+            if (failState == Fail.IMPREVISTO)
             {
                 patron.text.fontStyle = FontStyle.Bold;
             }
@@ -144,73 +109,24 @@ public class ZoneManager : MonoBehaviour
             patron.typeFail = Fail.IMPREVISTO;
 
             patron.score.text = ($"{unexpe}/{ unexpected}");
-            int i = 0;
-
-            if (tempt1.Count > 0)
-            {
-
-                foreach (var s in tempt1)
-                {
-                    patron.details.Add(s);
-                }
-            }
-            else
-            {
-                do
-                {
-                    var details = new Details();
-                    details.CreateDetails(errors[Random.Range(0, errors.Count)], services[Random.Range(0, services.Count)]);
-                    patron.details.Add(details);
-                    tempt1.Add(details);
-                    i++;
-                }
-                while (i < unexpected);
-
-            }
-
         }
         if (failure > 0)
         {
             FailPrefab patron = Instantiate(failPrefab, transform1);
             patron.image.sprite = incidents.Sprite[2];
-            if (fail1 == Fail.FALLA)
+            if (failState == Fail.FALLA)
             {
                 patron.text.fontStyle = FontStyle.Bold;
             }
-            
             patron.text.text = Fail.FALLA.ToString();
             patron.typeFail = Fail.FALLA;
-
-            patron.score.text = ($"{failu}/{failure}");
-            int i = 0;
-
-            if (tempt2.Count > 0)
-            {
-
-                foreach (var s in tempt2)
-                {
-                    patron.details.Add(s);
-                }
-            }
-            else
-            {
-                do
-                {
-                    var details = new Details();
-                    details.CreateDetails(errors[Random.Range(0, errors.Count)], services[Random.Range(0, services.Count)]);
-                    patron.details.Add(details);
-                    tempt2.Add(details);
-                    i++;
-                }
-
-                while (i < failure);
-            }
+            patron.score.text = ($"{failu}/{failure}");    
         }
         if (maintenance > 0)
         {
             FailPrefab patron = Instantiate(failPrefab, transform1);
             patron.image.sprite = incidents.Sprite[3];
-            if (fail1 == Fail.MANTENIMIENTO)
+            if (failState == Fail.MANTENIMIENTO)
             {
                 patron.text.fontStyle = FontStyle.Bold;
             }
@@ -218,28 +134,7 @@ public class ZoneManager : MonoBehaviour
             patron.typeFail = Fail.MANTENIMIENTO;
 
             patron.score.text = ($"{mainte}/{ maintenance}");
-            int i = 0;
 
-            if (tempt3.Count > 0)
-            {
-                foreach (var s in tempt3)
-                {
-                    patron.details.Add(s);
-
-                }
-            }
-            else
-            {
-                do
-                {
-                    var details = new Details();
-                    details.CreateDetails(errors[Random.Range(0, errors.Count)], services[Random.Range(0, services.Count)]);
-                    patron.details.Add(details);
-                    tempt3.Add(details);
-                    i++;
-                }
-                while (i < maintenance);
-            }
         }
 
         CreateAll();
@@ -249,30 +144,17 @@ public class ZoneManager : MonoBehaviour
     public void CreateAll()
     {
         List<State> temp = new List<State>();
-        Out current=new Out();
+
         foreach (var item in state)
         {
-            if (item.Fail == fail1)
+            if (item.Fail == failState)
             {
                 temp.Add(item);
             }
         }
-        foreach (Transform child in transform1)
-        {
-            if (child.GetComponent<FailPrefab>().typeFail == fail1)
-            {
-                current = child.GetComponent<Out>();
-            }
-            //  child.gameObject.GetComponent<Out>().CreateDetail(fail1,n);
+            panel.CreateDetail(temp, n);
+       
 
-        }
-
-      
-            for (int i = 0; i < temp.Count; i++)
-            {
-                current.Fail.details[i].num = temp[i].Numero;
-        }
-        current.CreateDetail(fail1, n);
 
     }
 

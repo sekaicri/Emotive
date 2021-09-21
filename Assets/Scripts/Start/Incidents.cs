@@ -17,11 +17,11 @@ public class Incidents : MonoBehaviour
     private int unexpected;
     private int failure;
     private int maintenance;
-    private int envir=0;
-    private int unexpe=0;
-    private int failu=0;
-    private int mainte=0;
-    private int mision; 
+    public int envir = 0;
+    public int unexpe = 0;
+    public int failu = 0;
+    public int mainte = 0;
+    private decimal mision;
     [SerializeField]
     private Text textEnvironmentalDamage;
     [SerializeField]
@@ -30,45 +30,83 @@ public class Incidents : MonoBehaviour
     private Text textfailure;
     [SerializeField]
     private Text textMaintenance;
-
+    [SerializeField]
+    private Image filled;
+    [SerializeField]
+    private Timer time;
+    private decimal all = 0;
+    private decimal fill;
+    private decimal num;
+    [SerializeField]
+    private VarEmotiv var;
     public List<Sprite> Sprite { get => sprite; set => sprite = value; }
 
+
+    [SerializeField]
+    private Final final;
     public void StartGame()
     {
-        mision = UnityEngine.Random.Range(10, 16);
+        all = 0;
+        envir = 0;
+        unexpe = 0;
+        failu = 0;
+        mainte = 0;
+        all = 0;
+        environmentalDamage = 0;
+        unexpected = 0;
+        failure = 0;
+        maintenance = 0;
+
+        foreach (State item in images)
+        {
+            foreach (Transform child in item.transform)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+            item.State1 = false;
+            item.button.interactable = true;
+            item.States = States.First;
+        }
+
+
+        mision = 15;
+        fill = (1 / mision);
+        Debug.Log(fill);
         decimal num = (mision / 4);
         num = Math.Floor(num);
 
-        for (int s = 0; s < 4; s++) { 
+        for (int s = 0; s < 4; s++)
+        {
 
-        int i = 0;
-        do
+            int i = 0;
+            do
+            {
+                int trans = UnityEngine.Random.Range(0, 15);
+                if (images[trans].State1 == true)
+                {
+                    i--;
+                }
+                else
+                {
+                    PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
+                    tempInstantiate.Incidents(Sprite[s], s);
+                    tempInstantiate.SetupParent();
+                }
+                i++;
+            }
+            while (i < num);
+        }
+
+        decimal numnew = mision - (num * 4);
+        for (int s = 0; s < numnew; s++)
         {
             int trans = UnityEngine.Random.Range(0, 15);
             if (images[trans].State1 == true)
             {
-                i--;
+                s--;
             }
             else
             {
-                    PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
-                    tempInstantiate.Incidents(Sprite[s], s);
-                    tempInstantiate.SetupParent();
-            }
-            i++;
-        }
-        while (i < num);
-    }
-
-        decimal numnew = mision - (num*4);
-        for (int s = 0; s < numnew; s++) {
-            int trans = UnityEngine.Random.Range(0, 15);
-              if (images[trans].State1 == true)
-                {
-                    s--;
-                }
-                else
-                {
                 int temp = UnityEngine.Random.Range(0, 4);
                 PrefabsIncidents tempInstantiate = Instantiate(prefabIncidents, images[trans].transform);
                 tempInstantiate.Incidents(Sprite[temp], temp);
@@ -92,13 +130,100 @@ public class Incidents : MonoBehaviour
                 }
             }
         }
-
-        textEnvironmentalDamage.text = ($"{envir}/{num+ environmentalDamage}");
-        textUnexpected.text = ($"{unexpe}/{num+ unexpected}");
-        textfailure.text = ($"{failu}/{num+ failure}");
-        textMaintenance.text = ($"{mainte}/{num+ maintenance}");
-        Debug.Log(mision);
+        Dates(num);
     }
+
+
+    public void Dates(decimal num)
+    {
+        textEnvironmentalDamage.text = ($"{envir}/{num + environmentalDamage}");
+        textUnexpected.text = ($"{unexpe}/{num + unexpected}");
+        textfailure.text = ($"{failu}/{num + failure}");
+        textMaintenance.text = ($"{mainte}/{num + maintenance}");
+        this.num = num;
+
+        filled.fillAmount = (float)(all * fill);
+
+    }
+
+    public void Points(Fail fail)
+    {
+
+        switch (fail)
+        {
+            case Fail.DAÑO_AMBIENTAL:
+                envir++;
+                all++;
+                break;
+            case Fail.IMPREVISTO:
+                unexpe++;
+                all++;
+                break;
+            case Fail.FALLA:
+                failu++;
+                all++;
+                break;
+            case Fail.MANTENIMIENTO:
+                mainte++;
+                all++;
+                break;
+            default:
+                break;
+        }
+
+        filled.fillAmount = (float)(all * fill);
+        textEnvironmentalDamage.text = ($"{envir}/{num + environmentalDamage}");
+        textUnexpected.text = ($"{unexpe}/{num + unexpected}");
+        textfailure.text = ($"{failu}/{num + failure}");
+        textMaintenance.text = ($"{mainte}/{num + maintenance}");
+
+
+
+
+        if (all == mision)
+        {
+            Invoke("EndGame", 2f);
+        }
+
+    }
+
+    public void EndGame()
+    {
+
+        string incidents = $"{all}/{mision}";
+        string bonus = "0";
+
+
+        switch (time.m)
+        {
+            case 5:
+                bonus = "500";
+                break;
+
+            case 4:
+                bonus = "500";
+                break;
+            case 3:
+                bonus = "400";
+                break;
+            case 2:
+                bonus = "300";
+                break;
+            case 1:
+                bonus = "100";
+                break;
+            case 0:
+                bonus = "50";
+                break;
+            default:
+                break;
+        }
+
+        final.EndGame(incidents, bonus, var.stress/var.count, var.focus/var.count, var.relaxation/var.count);
+
+    }
+
+
 
 
 }

@@ -9,16 +9,15 @@ public class SaveProgressConsumer : MonoBehaviour
     [SerializeField]
     private  Item response;
 
-
+    [SerializeField]
+    private LoginConsumer login;
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
 
     }
 
-    public void SelectCharacter (){
-        SaveProgressPetition();
-    }
+  
 
     public void SaveProgressPetition()
     {
@@ -47,6 +46,8 @@ public class SaveProgressConsumer : MonoBehaviour
             UserData.Instance.item.enfoque = this.response.enfoque;
             UserData.Instance.item.relajacion = this.response.relajacion;
             UserData.Instance.item.bonus = this.response.bonus;
+
+            login.LoginPetitionUpdate(PlayerPrefs.GetString("mail"), PlayerPrefs.GetString("Password"));
 
         }
         else

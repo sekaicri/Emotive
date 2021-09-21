@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PanelDetails : MonoBehaviour
 {
-    public Text service ;
+    public Text service;
     public Text affected;
     public string severity;
     public string information;
@@ -13,6 +13,7 @@ public class PanelDetails : MonoBehaviour
 
 
     public void Title() {
+
         SingletonInformation.Instance.Text(severity, information);
     }
 

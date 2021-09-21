@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,16 +12,14 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private int seconds;
 
-    private int m, s;
+    public int m, s;
 
     [SerializeField]
     private Text timerText;
+    [SerializeField]
+    private Incidents incidents;
+    
 
-    [SerializeField]
-    private ElementIdentifier main;
-    [SerializeField]
-    private ElementIdentifier final;
-  
     public void StartTimer()
     {
         m = minutes;
@@ -33,9 +32,13 @@ public class Timer : MonoBehaviour
     private void StopTimer()
     {
         CancelInvoke();
-        InterfaceManager.Instance.ShowScreen(final);
-        InterfaceManager.Instance.HideScreen(main);
+        incidents.EndGame();
+    }
 
+    public void Again()
+    {
+        CancelInvoke();
+      
     }
 
     private void UpdateTimer()

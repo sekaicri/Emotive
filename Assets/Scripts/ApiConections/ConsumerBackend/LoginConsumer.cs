@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class LoginConsumer : MonoBehaviour
 {
-    
+
     private string email, password;
     [SerializeField]
     private LoginResponse response;
@@ -19,6 +19,7 @@ public class LoginConsumer : MonoBehaviour
     private UnityEvent succeededLogin;
     [SerializeField]
     private TMP_Text name;
+    private bool loginPetitionUpdate;
 
     public string Email { get => email; set => email = value; }
     public string Password { get => password; set => password = value; }
@@ -29,6 +30,14 @@ public class LoginConsumer : MonoBehaviour
         email = email1.text;
         password = password1.text;
 
+        StartCoroutine(AsyncPetition());
+    }
+
+    public void LoginPetitionUpdate(string email, string password)
+    {
+        this.email = email;
+        this.password = password;
+        loginPetitionUpdate = true;
         StartCoroutine(AsyncPetition());
     }
     public void AutoLogin()
@@ -55,12 +64,21 @@ public class LoginConsumer : MonoBehaviour
         {
           
             this.response = JsonConvert.DeserializeObject<LoginResponse>(response);
-            succeededLogin.Invoke();
+            if (!loginPetitionUpdate)
+            {
+                succeededLogin.Invoke();
+            }
+      
             UserData.Instance.usuario = this.response.usuario;
             UserData.Instance.items = this.response.items;
-            name.text = $" ¡BIENVENIDO! {UserData.Instance.usuario.name}";
-         
-         
+            string text = $" ¡BIENVENIDO! {UserData.Instance.usuario.name}";
+            name.text = text.ToUpper();
+            PlayerPrefs.SetString("Password", password);
+            PlayerPrefs.SetString("mail", email);
+
+            loginPetitionUpdate = false;
+            email1.text = "";
+            password1.text = "";
 
         }
         else

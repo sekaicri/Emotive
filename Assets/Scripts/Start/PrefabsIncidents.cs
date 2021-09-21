@@ -13,16 +13,13 @@ public class PrefabsIncidents : MonoBehaviour
     [SerializeField]
     public GameObject ButtonState;
 
-
     private void Start()
     {
         ButtonState = transform.parent.gameObject;
     }
 
-
-
-
     public void Incidents(Sprite sprite, int num) {
+
 
         spriteIn = sprite;
 

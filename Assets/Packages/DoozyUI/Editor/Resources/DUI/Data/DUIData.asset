@@ -24,8 +24,11 @@ MonoBehaviour:
       - MainMenu
       - MainPrincipal
       - MyAccount
+      - Noti
       - Notification
+      - NoTouch
       - Patron
+      - Points
       - Register
       - Start
       isExpanded:

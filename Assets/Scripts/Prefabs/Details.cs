@@ -13,7 +13,7 @@ public class Details
     
     public void CreateDetails(string errors , string services)
     {
-        affected = Random.Range(1500, 3500);
+        affected = Random.Range(1000, 4000);
 
         error = errors;
         service = services;
