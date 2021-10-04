@@ -46,12 +46,19 @@ public class PatronView : MonoBehaviour
     [ContextMenu("holi")]
     public void StartPatron(string severity)
     {
+        StopAllCoroutines();
         Num.Instance.temp = 0;
-        x = Random.Range(3, 4);
-        y = Random.Range(3, 4);
+        x = Random.Range(3, 5);
+        y = Random.Range(3, 5);
+//#if UNITY_EDITOR
+//        x = 2;
+//        y = 2;
+//#endif
         xy = x * y;
         layaout.constraintCount = x;
         Rando8(severity);
+        lineRenderer.Points = new Vector2[1];
+
     }
     private void CreatePlane(string severity)
     {
@@ -159,7 +166,6 @@ public class PatronView : MonoBehaviour
                 var pointlist = new List<Vector2>(lineRenderer.Points);
                 pointlist.Add(point);
                 lineRenderer.Points = pointlist.ToArray();
-                Debug.Log(x);
                 yield return null;
 
 
@@ -170,18 +176,23 @@ public class PatronView : MonoBehaviour
                         s.point.interactable = false;
                     }
                 }
+           
             }
-
+            if (x + 2 == list.Count)
+            {
+                listNew[listNew.Count - 1].point.interactable = false;
+                yield return new WaitForSeconds(0.2f);
+            }
         }
-        listNew[8].point.interactable = false;
+
+
+
+
         if (Again == false)
         {
             StartCoroutine(Draw());
         }
-        else {
-            lineRenderer.Points = new Vector2[1];
-        }
-
+       
 
     }
 

@@ -13,6 +13,11 @@ public class AssignedPoints : MonoBehaviour
     [SerializeField]
     private Score score;
 
+    public void Pointstart() {
+     low = 0;
+      medium = 0;
+      high = 0;
+}
   
     public void Points() {
         foreach (var s in SingletonInformation.Instance.states) {

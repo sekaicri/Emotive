@@ -18,7 +18,13 @@ public class SingletonInformation : MonoBehaviour
     [SerializeField]
     public Transform fail,fail1;
     [SerializeField]
-    public List<string> errors = new List<string>();
+    public List<string> errorsAmbienta= new List<string>();
+    [SerializeField]
+    public List<string> errorsImprevisto = new List<string>();
+    [SerializeField]
+    public List<string> errorsFalla = new List<string>();
+    [SerializeField]
+    public List<string> errorMante = new List<string>();
     [SerializeField]
     public List<string> services = new List<string>();
     [SerializeField]

@@ -38,6 +38,10 @@ public class Final : MonoBehaviour
     private SaveProgressConsumer saveProgressConsumer;
     [SerializeField]
     private Image smileandsad;
+    [SerializeField]
+    private ElementIdentifier CODE;
+    [SerializeField]
+    private ElementIdentifier PATRON;
     public void EndGame(string incidentes, string bonus, float stress, float focus, float relajate) {
         name.text = $"¡HA TERMINADO LA JORNADA! {UserData.Instance.usuario.name.ToUpper()}";
         points.text = pointsinScene.text;
@@ -45,6 +49,9 @@ public class Final : MonoBehaviour
         this.bonus.text = bonus;
         InterfaceManager.Instance.ShowScreen(final);
         InterfaceManager.Instance.HideScreen(main);
+        InterfaceManager.Instance.HideScreen(CODE);
+        InterfaceManager.Instance.HideScreen(PATRON);
+
         stres.fillAmount = stress;
         this.focus.fillAmount = focus;
         this.relajate.fillAmount = relajate;
@@ -52,7 +59,7 @@ public class Final : MonoBehaviour
         tfocus.text = focus.ToString("0.#");
         trelajate.text = relajate.ToString("0.#");
 
-        if (stress > 0.5)
+        if (stress > 0.6)
         {
             UserData.Instance.item.estado = 0;
             smileandsad.sprite = Smile[1];
@@ -70,6 +77,7 @@ public class Final : MonoBehaviour
         UserData.Instance.item.relajacion = relajate;
         UserData.Instance.item.bonus = int.Parse(bonus);
         saveProgressConsumer.SaveProgressPetition();
+
     }
 
 }

@@ -14,6 +14,8 @@ public class Cuadrilla : MonoBehaviour
     private Text severityScene;
     [SerializeField]
     private List<TMP_Text> texts = new List<TMP_Text>();
+    [SerializeField]
+    private List<TMP_Text> textsteam = new List<TMP_Text>();
     private Zones currentZonePatron;
     [SerializeField]
     private Image cuadrillasZone;
@@ -48,14 +50,20 @@ public class Cuadrilla : MonoBehaviour
     private string severity;
     [SerializeField]
     private Score Score;
-
     [SerializeField]
     private Button equipo;
     [SerializeField]
     private Text monitoring;
-
-
-
+    [SerializeField]
+    private Alert alert;
+    [SerializeField]
+    private Alert win;
+    [SerializeField]
+    private Button Teambutton1;
+    [SerializeField]
+    private Button Teambutton2;
+    [SerializeField]
+    private Button Teambutton3;
 
     public void Eraser()
     {
@@ -94,7 +102,6 @@ public class Cuadrilla : MonoBehaviour
     }
     public void CuadrillaStart(string severity)
     {
-        this.severity = severity;
         if (severityScene.text == severity)
         {
             foreach (var s in texts)
@@ -104,9 +111,11 @@ public class Cuadrilla : MonoBehaviour
                     s.fontStyle = TMPro.FontStyles.Underline;
                     s.fontSize = 40;
 
+                    this.severity = severity;
+                    button.interactable = true;
                 }
             }
-            button.interactable = true;
+          
         }
         else
         {
@@ -135,6 +144,8 @@ public class Cuadrilla : MonoBehaviour
 
     public void CuadrillaAssigne()
     {
+
+
         switch (severity)
         {
             case "BAJA":
@@ -153,6 +164,7 @@ public class Cuadrilla : MonoBehaviour
                 break;
         }
 
+
         ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.NotiEmotiv, "¡EXCELENTE! \nLA CUADRILLA ESTÁ EN CAMINO.", null);
         InAppNotification1.Instance.ShowNotication(notification);
         button.interactable = false;
@@ -168,6 +180,7 @@ public class Cuadrilla : MonoBehaviour
 
         lr.color = Color.white;
 
+        alert.PlaySound();
         yield return new WaitForSeconds(1);
         Vector2 orig = new Vector2();
         Vector2 orig2 = new Vector2();
@@ -221,7 +234,8 @@ public class Cuadrilla : MonoBehaviour
             yield return null;
         }
 
-        CuadrillaEnd();
+        StartCoroutine(CuadrillaEnd());
+
     }
 
 
@@ -241,7 +255,6 @@ public class Cuadrilla : MonoBehaviour
 
         ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.NotiEmotiv, "¡TENEMOS UN IMPREVISTO! LA CUADRILLA HA LOGRADO DAR SOLUCIÓN PARCIAL AL INCIDENTE, EN LA PESTAÑA DE EQUIPOS PODRÁ TERMINAR  LA TAREA ENVIANDO REFUERZOS.", null);
         InAppNotification1.Instance.ShowNotication(notification);
-        interfaceGame.High();
         teams.SaveTeams(ubication, failcua);
         monitoring.text = "solución insuficiente, es necesario enviar un Equipo ";
 
@@ -250,10 +263,11 @@ public class Cuadrilla : MonoBehaviour
         {
             if (state == s)
             {
-
                 s.States = States.Three;
             }
         }
+
+        interfaceGame.High();
 
     }
 
@@ -319,10 +333,11 @@ public class Cuadrilla : MonoBehaviour
             if (state == s)
             {
                 s.Points();
-
             }
         }
 
+        alert.PlaySound();
+ 
         lr.color = Color.blue;
         yield return new WaitForSeconds(1);
         Vector2 orig = new Vector2();
@@ -356,30 +371,10 @@ public class Cuadrilla : MonoBehaviour
         equipo.gameObject.SetActive(false);
         equipo.interactable = false;
 
-        switch (severity)
-        {
-            case "BAJA":
-                button1.interactable = true;
-                button1.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
-                break;
-            case "MEDIA":
-                button2.interactable = true;
-                button2.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
-                break;
-            case "ALTA":
-                button3.interactable = true;
-                button3.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
-                break;
-            default:
-                break;
 
-        }
 
      
-
-
         lr.Points = new Vector2[1];
-
 
         foreach (var s in texts)
         {
@@ -387,6 +382,11 @@ public class Cuadrilla : MonoBehaviour
             s.fontSize = 35;
         }
 
+        foreach (var s in textsteam)
+        {
+            s.fontStyle = TMPro.FontStyles.Normal;
+            s.fontSize = 35;
+        }
         for (float i = 7; i < 10; i += Time.deltaTime * timer)
         {
             prefabFilleds[state.NumState - 1].filed.fillAmount = i / 10;
@@ -395,14 +395,8 @@ public class Cuadrilla : MonoBehaviour
         }
 
 
-        foreach (var s in fontPre.Buttons)
-        {
-            if (ubication == s)
-            {
-                s.interactable = false;
-            }
-        }
- 
+
+
         ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
         InAppNotification1.Instance.ShowNotication(notification);
 
@@ -410,19 +404,80 @@ public class Cuadrilla : MonoBehaviour
 
         Points.Points(failcua);
         interfaceGame.EndHig();
-
-
+        teams.TeamsEnd();
         StartCoroutine(LineDrawEND());
-  
 
+        switch (severity)
+        {
+            case "BAJA":
+                button1.interactable = true;
+                Teambutton1.interactable = true;
+                button1.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                Teambutton1.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                break;
+            case "MEDIA":
+                button2.interactable = true;
+                Teambutton2.interactable = true;
+                button2.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                Teambutton2.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                break;
+            case "ALTA":
+                button3.interactable = true;
+                Teambutton3.interactable = true;
+                button3.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                Teambutton3.transform.GetChild(0).GetComponent<Text>().text = "DISPONIBLE";
+                break;
+            default:
+                break;
+        }
+
+        foreach (var s in fontPre.Buttons)
+        {
+            if (ubication == s)
+            {
+             
+                s.interactable = false;
+                win.PlaySound();
+                yield return new WaitForSeconds(10);
+                s.gameObject.SetActive(false);
+                foreach (var x in SingletonInformation.Instance.states)
+                {
+                    if (state == x)
+                    {
+                        x.PointsMinime();
+                    }
+                }
+
+            }
+        }
 
 
     }
 
 
-    private void CuadrillaEnd()
-    {
+    public void patron(Button end) {
+        StartCoroutine(patronEnd(end));
+    }
 
+
+
+    private IEnumerator patronEnd(Button end)
+    {
+        end.interactable = false;
+        win.PlaySound();
+
+        yield return new WaitForSeconds(10);
+        end.gameObject.SetActive(false);
+        foreach (var x in SingletonInformation.Instance.states)
+        {
+            if (state == x)
+            {
+                x.PointsMinime();
+            }
+        }
+    }
+        private IEnumerator CuadrillaEnd()
+    {
 
 
         foreach (var s in SingletonInformation.Instance.states)
@@ -430,9 +485,20 @@ public class Cuadrilla : MonoBehaviour
             if (state == s)
             {
                 s.Points();
-
             }
         }
+
+        
+        prefabFilleds[state.NumState - 1].image.gameObject.SetActive(false);
+        prefabFilleds[state.NumState - 1].filed.fillAmount = 0;
+        Points.Points(failcua);
+        cuadrillasZone.gameObject.SetActive(false);
+      
+        ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
+        InAppNotification1.Instance.ShowNotication(notification);
+        interfaceGame.endmedium();
+        Score.ScorePoints(severityCua);
+
 
         switch (severity)
         {
@@ -451,27 +517,34 @@ public class Cuadrilla : MonoBehaviour
             default:
                 break;
         }
-        prefabFilleds[state.NumState - 1].image.gameObject.SetActive(false);
-        prefabFilleds[state.NumState - 1].filed.fillAmount = 0;
-        Points.Points(failcua);
-        cuadrillasZone.gameObject.SetActive(false);
-        foreach (var s in fontPre.Buttons)
-        {
-            if (ubication == s)
-            {
-                s.interactable = false;
-            }
-        }
-        ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
-        InAppNotification1.Instance.ShowNotication(notification);
-        interfaceGame.endmedium();
-        Score.ScorePoints(severityCua);
+
 
         foreach (var s in texts)
         {
             s.fontStyle = TMPro.FontStyles.Normal;
             s.fontSize = 35;
         }
+
+        foreach (var s in fontPre.Buttons)
+        {
+            if (ubication == s)
+            {
+                s.interactable = false;
+                win.PlaySound();
+
+                yield return new WaitForSeconds(10);
+                s.gameObject.SetActive(false);
+                foreach (var x in SingletonInformation.Instance.states)
+                {
+                    if (state == x)
+                    {
+                        x.PointsMinime();
+                    }
+                }
+            }
+        }
+
+
     }
 
 }

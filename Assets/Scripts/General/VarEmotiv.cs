@@ -30,6 +30,16 @@ public class VarEmotiv : MonoBehaviour
     public float count;
 
     [SerializeField]
+    private Image streCr;
+
+    [SerializeField]
+    private Image focCr;
+
+    [SerializeField]
+    private Image relCr;
+
+
+    [SerializeField]
     private Image Var;
     public void StartVar()
     {
@@ -48,9 +58,9 @@ public class VarEmotiv : MonoBehaviour
         int segundos = 0;
 
 
-        stressRan = Random.Range(0, 7);
-        focusRan = Random.Range(0, 7);
-        relaxationRan = Random.Range(0, 7);
+        stressRan = Random.Range(0,11);
+        focusRan = Random.Range(0,11);
+        relaxationRan = Random.Range(0,11);
         stressRan = stressRan / 10;
         focusRan = focusRan / 10;
         relaxationRan = relaxationRan / 10;
@@ -68,6 +78,33 @@ public class VarEmotiv : MonoBehaviour
             rel.fillAmount = temprela;
             if (tempStress>0.5) {
                 StartCoroutine(ColorPinture());
+            }
+
+            if (tempStress > 0.8)
+            {
+                streCr.gameObject.SetActive(true);
+            }
+            else
+            {
+                streCr.gameObject.SetActive(false);
+            }
+
+            if (tempFocus > 0.8)
+            {
+                focCr.gameObject.SetActive(true);
+            }
+            else {
+                focCr.gameObject.SetActive(false);
+
+            }
+
+            if (temprela > 0.8)
+            {
+                relCr.gameObject.SetActive(true);
+            }
+            else {
+                relCr.gameObject.SetActive(false);
+
             }
 
             tstre.text = tempStress.ToString("0.#");
@@ -137,6 +174,12 @@ public class VarEmotiv : MonoBehaviour
         relaxation = (relaxation + relaxationRan);
     }
 
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+
+    }
 }
 
 

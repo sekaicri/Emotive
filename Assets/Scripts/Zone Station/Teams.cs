@@ -29,7 +29,6 @@ public class Teams : MonoBehaviour
 
     public void TeamsStart(string severity)
     {
-        this.severity = severity;
         if (severityScene.text == severity)
         {
             foreach (var s in texts)
@@ -38,6 +37,7 @@ public class Teams : MonoBehaviour
                 {
                     s.fontStyle = TMPro.FontStyles.Underline;
                     s.fontSize = 40;
+                    this.severity = severity;
 
                 }
             }
@@ -139,6 +139,10 @@ public class Teams : MonoBehaviour
             default:
                 break;
         }
+
+
+
+
         foreach (var s in texts)
         {
             s.fontStyle = TMPro.FontStyles.Normal;

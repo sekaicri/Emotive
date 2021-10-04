@@ -37,7 +37,7 @@ public class RegisterConsumer : MonoBehaviour
             InAppNotification.Instance.ShowNotication(notification);
         }
 
-        else if (toggle1.isOn && toggle2.isOn) {
+        else if (!toggle1.isOn || !toggle2.isOn) {
 
             ClassnNotification notification = new ClassnNotification(EnumNotification.ButtonOk, "Aceptar Terminos","Terminos" );
             InAppNotification.Instance.ShowNotication(notification);

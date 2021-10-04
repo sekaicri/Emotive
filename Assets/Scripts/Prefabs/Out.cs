@@ -17,25 +17,32 @@ public class Out : MonoBehaviour
 
         foreach (var s in state)
         {
-            if (s.details.affected > 0) {
-            PanelDetails patron = Instantiate(prefabDetail, transformDetail);
-            patron.affected.text = s.details.affected.ToString();
-            patron.service.text = s.details.service;
-            patron.severity = s.details.severity;
-            patron.information = s.details.error;
-            patron.id = s.details.num;
-            if (s.details.num == num)
-            {
-                patron.service.fontStyle = FontStyle.Bold;
-                patron.Title();
 
-            }
+            if (s.details.affected > 0)
+            {
+                if (s.stateRandom == true)
+                {
+
+                    PanelDetails patron = Instantiate(prefabDetail, transformDetail);
+                    patron.affected.text = s.details.affected.ToString();
+                    patron.service.text = s.details.service;
+                    patron.severity = s.details.severity;
+                    patron.information = s.details.error;
+                    patron.id = s.details.num;
+
+                    if (s.details.num == num)
+                    {
+                        patron.service.fontStyle = FontStyle.Bold;
+                        patron.Title();
+
+                    }
+                }
             }
         }
 
     }
 
-  
+
 
 }
 

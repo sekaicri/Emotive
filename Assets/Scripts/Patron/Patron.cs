@@ -28,12 +28,21 @@ public class Patron : MonoBehaviour
     private Fail fail;
     [SerializeField]
     private Incidents Points;
-
     private State states;
     [SerializeField]
     private Score Score;
 
     private Zones currentZonePatron;
+
+
+
+    public void EraserAgain() {
+
+            Draw.Instance.eraserLine();
+            Num.Instance.temp = 0;
+        
+    }
+
 
     public void CreatePlane(string severity)
     {
@@ -63,6 +72,8 @@ public class Patron : MonoBehaviour
         }
     }
 
+   
+
 
     public void Check()
     {
@@ -77,7 +88,6 @@ public class Patron : MonoBehaviour
             }
         }
 
-
         int temp = 0;
         for (int i = 0; i < patronView.xy; i++)
         {
@@ -89,11 +99,11 @@ public class Patron : MonoBehaviour
 
         if (temp == patronView.xy)
         {
+
             patronView.Again = true;
 
             if (severity == "MEDIA")
             {
-
                 ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.Two, "TAREA FINALIZADA, CON NOVEDADES", "LA ASISTENCIA REMOTA NO HA LOGRADO DAR SOLUCIÓN AL INCIDENTE, ASIGNE UNA CUADRILLA PARA ATENDER EL INCIDENTE.");
                 InAppNotification1.Instance.ShowNotication(notification);
                 monitoring.text = "solución insuficiente, es necesario enviar una cuadrilla ";
@@ -122,9 +132,8 @@ public class Patron : MonoBehaviour
                     if (states == s)
                     {
                         s.States = States.Second;
-                        s.Sevesave =severity ;
+                        s.Sevesave = severity;
                         s.Cuadri.SaveCuadrilla(currentZonePatron, state, "ALTA", fail, states);
-
                     }
                 }
             }
@@ -133,35 +142,33 @@ public class Patron : MonoBehaviour
 
             else if (severity == "BAJA")
             {
-                interfaceGame.off();
 
-                foreach (var s in fontPre.Buttons)
-                {
-                    if (state == s)
-                    {
-                        s.interactable = false;
-                        
-                    }
-                }
 
                 foreach (var s in SingletonInformation.Instance.states)
                 {
                     if (states == s)
                     {
                         s.Points();
-
+                        s.Cuadri.patron(s.button);
                     }
                 }
+                interfaceGame.off();
+
 
                 ClasNotiEmotiv notification = new ClasNotiEmotiv(EnumNotiEmotiv.EndTarea, "TAREA FINALIZADA", null);
                 InAppNotification1.Instance.ShowNotication(notification);
                 Points.Points(fail);
                 Score.ScorePoints(severity);
+
             }
 
             // Correcto Baja ------------------------------------------------------------------------------------------
             Draw.Instance.eraserLine();
         }
+
+
+
+
         else
         {
             Draw.Instance.eraserLine();
@@ -177,5 +184,22 @@ public class Patron : MonoBehaviour
         this.fail = fail;
         currentZonePatron = currentZone;
     }
+
+    public void Again() {
+
+      
+        foreach (List<PrefabsPoint> item in planeList)
+        {
+            foreach (PrefabsPoint item1 in item)
+            {
+                Debug.Log(item1.num.ToString());
+                item1.point.interactable = true;
+            }
+        }
+
+        Draw.Instance.eraserLine();
+        Num.Instance.temp = 0;
+    }
+
 
 }

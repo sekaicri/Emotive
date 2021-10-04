@@ -44,11 +44,11 @@ public class InterfaceGame : MonoBehaviour
         {
 
             case "BAJA":
-                if (probability < 5)
+                if (probability < 3)
                 {
                     complexity = "BAJA";
                 }
-                else if (probability < 8)
+                else if (probability < 5)
                 {
                     complexity = "MEDIA";
                 }
@@ -58,7 +58,7 @@ public class InterfaceGame : MonoBehaviour
                 }
                 break;
             case "MEDIA":
-                if (probability < 3)
+                if (probability < 2)
                 {
                     complexity = "BAJA";
                 }
@@ -74,11 +74,11 @@ public class InterfaceGame : MonoBehaviour
 
             case "ALTA":
 
-                if (probability < 2)
+                if (probability < 1)
                 {
                     complexity = "BAJA";
                 }
-                else if (probability < 5)
+                else if (probability < 4)
                 {
                     complexity = "MEDIA";
                 }
@@ -97,15 +97,10 @@ public class InterfaceGame : MonoBehaviour
 
     private void Patron()
     {
-
         patronView.StartPatron(complexity);
         InterfaceManager.Instance.ShowScreen(gamePatron);
         main.gameObject.SetActive(true);
-
     }
-
-
-
     public void off()
     {
         InterfaceManager.Instance.HideScreen(gamePatron);
@@ -127,38 +122,46 @@ public class InterfaceGame : MonoBehaviour
     public void endmedium()
     {
         main.gameObject.SetActive(true);
-        buttonCuadrilla.gameObject.SetActive(false);
-        buttonEquipo.gameObject.SetActive(true);
-        Cuadrilla.gameObject.SetActive(false);
-        Equipoteams.gameObject.SetActive(false);
 
+        if (Equipoteams.gameObject.activeSelf || buttonEquipo.gameObject.activeSelf || buttonCuadrilla.gameObject.activeSelf)
+        {
+
+           
+        }
+        else {
+            buttonCuadrilla.gameObject.SetActive(false);
+            buttonEquipo.gameObject.SetActive(false);
+            Equipoteams.gameObject.SetActive(false);
+        }
+      
     }
 
     public void High()
     {
-        Cuadrilla.gameObject.SetActive(false);
-        main.gameObject.SetActive(true);
-        buttonCuadrilla.gameObject.SetActive(false);
-        buttonEquipo.gameObject.SetActive(false);
+        if (!buttonCuadrilla.enabled && !buttonEquipo.gameObject.activeSelf)
+        {
 
-        if (Cuadrilla.gameObject.activeSelf || buttonEquipo.enabled) {
-            Equipoteams.gameObject.SetActive(true);
-            Equipoteams.interactable = true;
-            Cuadrilla.gameObject.SetActive(false);
-            main.gameObject.SetActive(true);
-            buttonCuadrilla.gameObject.SetActive(false);
-            buttonEquipo.gameObject.SetActive(false);
+                Equipoteams.gameObject.SetActive(true);
+                Equipoteams.interactable = true;
+                main.gameObject.SetActive(true);
+     
         }
+        else {
 
+            if (!buttonCuadrilla.enabled)
+            {
+                buttonCuadrilla.gameObject.SetActive(false);
+                Equipoteams.gameObject.SetActive(true);
+                Equipoteams.interactable = true;
+            }
+        }
 
     }
 
 
     public void EndHig() {
-
-        Equipo.gameObject.SetActive(false);
-        buttonEquipo.gameObject.SetActive(false);
-        buttonCuadrilla.gameObject.SetActive(false);
+      
+  
     }
 
     public void CodeInterface()

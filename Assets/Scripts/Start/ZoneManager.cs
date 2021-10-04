@@ -26,6 +26,9 @@ public class ZoneManager : MonoBehaviour
     private Fail failState;
     [SerializeField]
     private Out panel;
+
+
+    private bool sta;
     private void Reset()
     {
         GetAllChildStates();
@@ -44,6 +47,7 @@ public class ZoneManager : MonoBehaviour
         unexpected = 0;
         failure = 0;
         maintenance = 0;
+
 
         foreach (var s in state)
         {
@@ -70,6 +74,7 @@ public class ZoneManager : MonoBehaviour
 
             }
         }
+        sta = false;
         this.n = n;
         failState = fail;
         PrefabCreate();
@@ -77,26 +82,63 @@ public class ZoneManager : MonoBehaviour
 
     public void Points(Fail fail)
     {
+     
 
-        switch (fail)
-        {
-            case Fail.DAÑO_AMBIENTAL:
-                envir++;
-                break;
-            case Fail.IMPREVISTO:
-                unexpe++;
-                break;
-            case Fail.FALLA:
-                failu++;
-                break;
-            case Fail.MANTENIMIENTO:
-                mainte++;
-                break;
-            default:
-                break;
-        }
+            switch (fail)
+            {
+                case Fail.DAÑO_AMBIENTAL:
+                    envir++;
+                    break;
+                case Fail.IMPREVISTO:
+                    unexpe++;
+                    break;
+                case Fail.FALLA:
+                    failu++;
+                    break;
+                case Fail.MANTENIMIENTO:
+                    mainte++;
+                    break;
+                default:
+                    break;
+
+            }
+        
     }
 
+    public void PointsMinime(Fail fail)
+    {
+        
+
+            switch (fail)
+            {
+                case Fail.DAÑO_AMBIENTAL:
+                    envir--;
+                    break;
+                case Fail.IMPREVISTO:
+                    unexpe--;
+                    break;
+                case Fail.FALLA:
+                    failu--;
+                    break;
+                case Fail.MANTENIMIENTO:
+                    mainte--;
+                    break;
+                default:
+                    break;
+            }
+
+        
+
+    }
+
+
+    public void PointsEraser()
+    {
+        envir = 0;
+        unexpe = 0;
+        failu = 0;
+        mainte = 0;
+    }
 
 
 
@@ -112,13 +154,13 @@ public class ZoneManager : MonoBehaviour
         {
             FailPrefab patron = Instantiate(failPrefab, transform1);
             patron.image.sprite = incidents.Sprite[0];
-            if (failState == Fail.DAÑO_AMBIENTAL) { 
-            patron.text.fontStyle = FontStyle.Bold;
+            if (failState == Fail.DAÑO_AMBIENTAL)
+            {
+                patron.text.fontStyle = FontStyle.Bold;
             }
             patron.text.text = Fail.DAÑO_AMBIENTAL.ToString().Replace("_", " ");
             patron.score.text = ($"{envir}/{ environmentalDamage}");
             patron.typeFail = Fail.DAÑO_AMBIENTAL;
-          
         }
 
         if (unexpected > 0)
@@ -131,8 +173,8 @@ public class ZoneManager : MonoBehaviour
             }
             patron.text.text = Fail.IMPREVISTO.ToString();
             patron.typeFail = Fail.IMPREVISTO;
-
             patron.score.text = ($"{unexpe}/{ unexpected}");
+
         }
         if (failure > 0)
         {
@@ -144,7 +186,8 @@ public class ZoneManager : MonoBehaviour
             }
             patron.text.text = Fail.FALLA.ToString();
             patron.typeFail = Fail.FALLA;
-            patron.score.text = ($"{failu}/{failure}");    
+            patron.score.text = ($"{failu}/{failure}");
+
         }
         if (maintenance > 0)
         {
@@ -156,12 +199,14 @@ public class ZoneManager : MonoBehaviour
             }
             patron.text.text = Fail.MANTENIMIENTO.ToString();
             patron.typeFail = Fail.MANTENIMIENTO;
-
             patron.score.text = ($"{mainte}/{ maintenance}");
 
-        }
 
-        CreateAll();
+        }
+        if (!sta)
+        {
+            CreateAll();
+        }
     }
 
 
@@ -176,8 +221,8 @@ public class ZoneManager : MonoBehaviour
                 temp.Add(item);
             }
         }
-            panel.CreateDetail(temp, n);
-       
+        panel.CreateDetail(temp, n);
+
 
 
     }

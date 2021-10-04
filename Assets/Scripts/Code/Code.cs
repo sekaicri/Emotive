@@ -48,7 +48,6 @@ public class Code : MonoBehaviour
     {
         if (text == input.text.ToUpper())
         {
-            teams.TeamsEnd();
             interfaceGame.CodeOff();
             cuadrilla.Cuadrillas[num-1].TeamsEnd();
             input.text = "";
@@ -68,7 +67,6 @@ public class Code : MonoBehaviour
     public void SaveCode(Button button, Fail fail) {
         ubication = button;
         failcua = fail;
-        GenerateRandomCode();
     }
     public void SaveCuadrilla(int num)
     {

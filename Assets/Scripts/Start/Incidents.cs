@@ -8,7 +8,7 @@ public class Incidents : MonoBehaviour
 {
 
     [SerializeField]
-    private List<State> images = new List<State>();
+    public List<State> images = new List<State>();
     [SerializeField]
     private List<Sprite> sprite = new List<Sprite>();
     [SerializeField]
@@ -17,6 +17,10 @@ public class Incidents : MonoBehaviour
     private int unexpected;
     private int failure;
     private int maintenance;
+    private int environmentalDamage1;
+    private int unexpected1;
+    private int failure1;
+    private int maintenance1;
     public int envir = 0;
     public int unexpe = 0;
     public int failu = 0;
@@ -44,6 +48,15 @@ public class Incidents : MonoBehaviour
 
     [SerializeField]
     private Final final;
+
+
+    public void End() {
+        foreach (State item in images)
+        {
+            item.stateRandom = false;
+            item.gameObject.SetActive(false);
+        }
+    }
     public void StartGame()
     {
         all = 0;
@@ -56,6 +69,10 @@ public class Incidents : MonoBehaviour
         unexpected = 0;
         failure = 0;
         maintenance = 0;
+        environmentalDamage1 = 0;
+        unexpected1 = 0;
+        failure1 = 0;
+        maintenance1 = 0;
 
         foreach (State item in images)
         {
@@ -66,12 +83,12 @@ public class Incidents : MonoBehaviour
             item.State1 = false;
             item.button.interactable = true;
             item.States = States.First;
+
         }
 
 
         mision = 15;
         fill = (1 / mision);
-        Debug.Log(fill);
         decimal num = (mision / 4);
         num = Math.Floor(num);
 
@@ -136,14 +153,43 @@ public class Incidents : MonoBehaviour
 
     public void Dates(decimal num)
     {
-        textEnvironmentalDamage.text = ($"{envir}/{num + environmentalDamage}");
-        textUnexpected.text = ($"{unexpe}/{num + unexpected}");
-        textfailure.text = ($"{failu}/{num + failure}");
-        textMaintenance.text = ($"{mainte}/{num + maintenance}");
+        
         this.num = num;
 
         filled.fillAmount = (float)(all * fill);
 
+    }
+
+
+
+
+    public void Points1(Fail fail)
+    {
+
+        switch (fail)
+        {
+            case Fail.DAÑO_AMBIENTAL:
+                environmentalDamage1++;
+                break;
+            case Fail.IMPREVISTO:
+                unexpected1++;
+                break;
+            case Fail.FALLA:
+                failure1++;
+                break;
+            case Fail.MANTENIMIENTO:
+                maintenance1++;
+                break;
+            default:
+                break;
+        }
+
+        filled.fillAmount = (float)(all * fill);
+        textEnvironmentalDamage.text = ($"{envir}/{ environmentalDamage1}");
+        textUnexpected.text = ($"{unexpe}/{ unexpected1}");
+        textfailure.text = ($"{failu}/{ failure1}");
+        textMaintenance.text = ($"{mainte}/{ maintenance1}");
+   
     }
 
     public void Points(Fail fail)
@@ -172,10 +218,10 @@ public class Incidents : MonoBehaviour
         }
 
         filled.fillAmount = (float)(all * fill);
-        textEnvironmentalDamage.text = ($"{envir}/{num + environmentalDamage}");
-        textUnexpected.text = ($"{unexpe}/{num + unexpected}");
-        textfailure.text = ($"{failu}/{num + failure}");
-        textMaintenance.text = ($"{mainte}/{num + maintenance}");
+        textEnvironmentalDamage.text = ($"{envir}/{ environmentalDamage1}");
+        textUnexpected.text = ($"{unexpe}/{ unexpected1}");
+        textfailure.text = ($"{failu}/{ failure1}");
+        textMaintenance.text = ($"{mainte}/{ maintenance1}");
 
 
 
@@ -216,8 +262,15 @@ public class Incidents : MonoBehaviour
             default:
                 break;
         }
-
+        
         final.EndGame(incidents, bonus, var.stress/var.count, var.focus/var.count, var.relaxation/var.count);
+        var.Stop();
+
+        foreach (State item in images)
+        {
+            item.stateRandom = false;
+        }
+        End();
 
     }
 

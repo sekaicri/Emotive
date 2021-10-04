@@ -13,7 +13,6 @@ public class PanelDetails : MonoBehaviour
 
 
     public void Title() {
-
         SingletonInformation.Instance.Text(severity, information);
     }
 

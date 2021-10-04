@@ -56,7 +56,9 @@ public class State : MonoBehaviour
     private Text monitoring;
     [SerializeField]
     private Code code;
-
+    public bool stateRandom = false;
+    [SerializeField]
+    private Alert alert;
 
     public bool State1 { get => state; set => state = value; }
     public Zones CurrentZone { get => currentZone; set => currentZone = value; }
@@ -70,15 +72,31 @@ public class State : MonoBehaviour
 
     public void Incidents(PrefabsIncidents prefab)
     {
-
-        this.gameObject.SetActive(true);
         PrefabsIncidents = prefab;
         Fail = prefab.Fail;
         button.GetComponent<Image>().sprite = PrefabsIncidents.SpriteIn;
         state = true;
         probability = Random.Range(0, 11);
         var details = new Details();
-        details.CreateDetails(SingletonInformation.Instance.errors[Random.Range(0, SingletonInformation.Instance.errors.Count)], SingletonInformation.Instance.services[Random.Range(0, SingletonInformation.Instance.services.Count)]);
+
+
+        switch (Fail)
+        {
+            case Fail.DAÑO_AMBIENTAL:
+                details.CreateDetails(SingletonInformation.Instance.errorsAmbienta[Random.Range(0, SingletonInformation.Instance.errorsAmbienta.Count)], SingletonInformation.Instance.services[Random.Range(0, SingletonInformation.Instance.services.Count)]);
+                break;
+            case Fail.IMPREVISTO:
+                details.CreateDetails(SingletonInformation.Instance.errorsImprevisto[Random.Range(0, SingletonInformation.Instance.errorsImprevisto.Count)], SingletonInformation.Instance.services[Random.Range(0, SingletonInformation.Instance.services.Count)]);
+                break;
+            case Fail.FALLA:
+                details.CreateDetails(SingletonInformation.Instance.errorsFalla[Random.Range(0, SingletonInformation.Instance.errorsFalla.Count)], SingletonInformation.Instance.services[Random.Range(0, SingletonInformation.Instance.services.Count)]);
+                break;
+            case Fail.MANTENIMIENTO:
+                details.CreateDetails(SingletonInformation.Instance.errorMante[Random.Range(0, SingletonInformation.Instance.errorMante.Count)], SingletonInformation.Instance.services[Random.Range(0, SingletonInformation.Instance.services.Count)]);
+                break;
+            default:
+                break;
+        }
         details.num = numState;
         this.details = details;
         Complexity();
@@ -87,9 +105,16 @@ public class State : MonoBehaviour
     public void Points() {
         zone.Points(Fail);
     }
+
+    public void PointsMinime()
+    {
+        zone.PointsMinime(Fail);
+    }
+
     public void IncidentsPlaces()
     {
 
+        alert.PlaySound();
         SingletonInformation.Instance.probability = probability;
         cuadrillaText.text = "SOLUCIÓN REMOTA";
         panelPlaceandIncidents.Place(currentZone.ToString().Replace("_", "  "));
@@ -107,7 +132,6 @@ public class State : MonoBehaviour
         {
             Monitoring.interactable = true;
             Monitoring.gameObject.SetActive(true);
-            Cuadrilla.gameObject.SetActive(false);
             Cuadrilla.gameObject.SetActive(false);
             teams.gameObject.SetActive(false);
             cuadril.gameObject.SetActive(false);
@@ -148,11 +172,11 @@ public class State : MonoBehaviour
         switch (details.severity)
         {
             case "BAJA":
-                if (probability < 5)
+                if (probability < 3)
                 {
                     Complexity1 = "BAJA";
                 }
-                else if (probability < 8)
+                else if (probability < 5)
                 {
                     Complexity1 = "MEDIA";
                 }
@@ -162,7 +186,7 @@ public class State : MonoBehaviour
                 }
                 break;
             case "MEDIA":
-                if (probability < 3)
+                if (probability < 2)
                 {
                     Complexity1 = "BAJA";
                 }
@@ -178,11 +202,11 @@ public class State : MonoBehaviour
 
             case "ALTA":
 
-                if (probability < 2)
+                if (probability < 1)
                 {
                     Complexity1 = "BAJA";
                 }
-                else if (probability < 5)
+                else if (probability < 4)
                 {
                     Complexity1 = "MEDIA";
                 }
@@ -209,8 +233,8 @@ public class State : MonoBehaviour
 public enum Zones
 {
     ZONA_SANTA_ANA,
-    ZONA_GRAN_LINE,
-    ZONA_RER_LINE,
-    ZONA_WATER_7,
-    ZONA_WANO
+    ZONA_SANTA_BÁRBARA,
+    ZONA_SAN_PEDRO,
+    ZONA_SAN_JUAN,
+    ZONA_SAN_MATEO
 }

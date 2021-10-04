@@ -12,14 +12,16 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private int seconds;
 
-    public int m, s;
-
+    public int m, s, r;
+    
     [SerializeField]
     private Text timerText;
     [SerializeField]
     private Incidents incidents;
     [SerializeField]
     private Alert alerta;
+    [SerializeField]
+    private RandomScene randomScene;
 
     public void StartTimer()
     {
@@ -34,23 +36,26 @@ public class Timer : MonoBehaviour
     {
         CancelInvoke();
         incidents.EndGame();
+        randomScene.StopAllCoroutines();
     }
 
     public void Again()
     {
         CancelInvoke();
-      
+
     }
 
     private void UpdateTimer()
     {
+        r++;
         s--;
         if (s == 0) {
 
             if (m == 0)
             {
                 StopTimer();
-           
+                CancelInvoke();
+
             }
 
             else {
@@ -60,12 +65,26 @@ public class Timer : MonoBehaviour
                 int alert = UnityEngine.Random.Range(0, 11);
                 if (alert > 6)
                 {
-                    alerta.PlaySound();
+                    alerta.PlayandImage();
                 }
             }
         }
+
+        if (m == 9 && s == 58) {
+          randomScene.RandomStart();
+
+        }
+        if (r == 10) {
+            randomScene.RandomStart();
+            r = 0;
+        }
         WriteTimer(m, s);
-        Invoke("UpdateTimer", 1f);
+        if (m == 0 && s == 0)
+        {
+        }
+        else {
+            Invoke("UpdateTimer", 1f);
+        }
     }
     private void WriteTimer(int m, int s)
     {

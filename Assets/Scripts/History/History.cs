@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class History : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class History : MonoBehaviour
     [SerializeField]
     private Text name;
     private List<PrefabsPanel> list = new List<PrefabsPanel>();
-
     public void HistoryDates() {
 
 
@@ -25,7 +25,7 @@ public class History : MonoBehaviour
         list = new List<PrefabsPanel>();
 
 
-        foreach (var item in UserData.Instance.items)
+        foreach (var item in UserData.Instance.items.AsEnumerable().Reverse())
         {
             PrefabsPanel tempInstantiate = Instantiate(prefabsPanel, transform);
             tempInstantiate.Setup(item);
@@ -46,7 +46,7 @@ public class History : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var item in UserData.Instance.items)
+        foreach (var item in UserData.Instance.items.AsEnumerable().Reverse())
         {
             if (item.estado == 0) {
                 PrefabsPanel tempInstantiate = Instantiate(prefabsPanel, transform);
@@ -57,7 +57,7 @@ public class History : MonoBehaviour
         }
 
 
-        foreach (var item in UserData.Instance.items)
+        foreach (var item in UserData.Instance.items.AsEnumerable().Reverse())
         {
             if (item.estado == 1)
             {
@@ -78,7 +78,7 @@ public class History : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var item in UserData.Instance.items)
+        foreach (var item in UserData.Instance.items.AsEnumerable().Reverse())
         {
             if (item.estado == 1)
             {
@@ -89,7 +89,7 @@ public class History : MonoBehaviour
 
         }
 
-        foreach (var item in UserData.Instance.items)
+        foreach (var item in UserData.Instance.items.AsEnumerable().Reverse())
         {
             if (item.estado == 0)
             {
