@@ -42,6 +42,8 @@ public class Final : MonoBehaviour
     private ElementIdentifier CODE;
     [SerializeField]
     private ElementIdentifier PATRON;
+    [SerializeField]
+    private Ws_Client_S ws;
     public void EndGame(string incidentes, string bonus, float stress, float focus, float relajate) {
         name.text = $"¡HA TERMINADO LA JORNADA! {UserData.Instance.usuario.name.ToUpper()}";
         points.text = pointsinScene.text;
@@ -51,7 +53,6 @@ public class Final : MonoBehaviour
         InterfaceManager.Instance.HideScreen(main);
         InterfaceManager.Instance.HideScreen(CODE);
         InterfaceManager.Instance.HideScreen(PATRON);
-
         stres.fillAmount = stress;
         this.focus.fillAmount = focus;
         this.relajate.fillAmount = relajate;
@@ -77,6 +78,8 @@ public class Final : MonoBehaviour
         UserData.Instance.item.relajacion = relajate;
         UserData.Instance.item.bonus = int.Parse(bonus);
         saveProgressConsumer.SaveProgressPetition();
+        ws.Stopservice();
+
 
     }
 

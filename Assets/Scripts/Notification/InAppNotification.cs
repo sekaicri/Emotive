@@ -13,6 +13,10 @@ public class InAppNotification : MonoBehaviour
     [SerializeField]
     private GameObject buttonOk;
     [SerializeField]
+    private GameObject buttonWith;
+    [SerializeField]
+    private GameObject buttonWithout;
+    [SerializeField]
     private Image load;
     [SerializeField]
     private Text informationNotification;
@@ -20,6 +24,8 @@ public class InAppNotification : MonoBehaviour
     private Text Title;
     [SerializeField]
     private ElementIdentifier Show;
+    [SerializeField]
+    private GameObject again;
 
 
 
@@ -43,16 +49,38 @@ public class InAppNotification : MonoBehaviour
             case EnumNotification.ButtonOk:
                 buttonX.SetActive(false);
                 buttonOk.SetActive(true);
+                buttonWith.SetActive(false);
+                buttonWithout.SetActive(false);
                 load.gameObject.SetActive(false);
                 informationNotification.text = clase.textInformation;
                 informationNotification.gameObject.SetActive(true);
                 Title.gameObject.SetActive(true);
                 Title.text = clase.title;
+                again.SetActive(false);
+
                 break;
 
              case EnumNotification.Buttonx:
                 buttonX.SetActive(true);
                 buttonOk.SetActive(false);
+                buttonWith.SetActive(false);
+                buttonWithout.SetActive(false);
+                load.gameObject.SetActive(false);
+                informationNotification.gameObject.SetActive(true);
+                Title.gameObject.SetActive(true);
+                informationNotification.text = clase.textInformation;
+                Title.text = clase.title;
+                again.SetActive(false);
+
+                break;
+
+
+            case EnumNotification.buttonw:
+                again.SetActive(false);
+                buttonX.SetActive(false);
+                buttonOk.SetActive(false);
+                buttonWith.SetActive(true);
+                buttonWithout.SetActive(true);
                 load.gameObject.SetActive(false);
                 informationNotification.gameObject.SetActive(true);
                 Title.gameObject.SetActive(true);
@@ -60,15 +88,37 @@ public class InAppNotification : MonoBehaviour
                 Title.text = clase.title;
                 break;
 
+
+            case EnumNotification.buttonw1:
+                buttonX.SetActive(false);
+                buttonOk.SetActive(false);
+                buttonWith.SetActive(false);
+                again.SetActive(true);
+                buttonWithout.SetActive(true);
+                load.gameObject.SetActive(false);
+                informationNotification.gameObject.SetActive(true);
+                Title.gameObject.SetActive(true);
+                informationNotification.text = clase.textInformation;
+                Title.text = clase.title;
+                break;
+
+
             case EnumNotification.Load:
                 buttonX.SetActive(false);
+                buttonWith.SetActive(false);
+                buttonWithout.SetActive(false);
                 buttonOk.SetActive(false);
                 load.gameObject.SetActive(true);
                 informationNotification.gameObject.SetActive(false);
                 Title.gameObject.SetActive(false);
+                again.SetActive(false);
+
                 break;
 
+          
+
         }
+
         InterfaceManager.Instance.ShowScreen(Show);
     }
 

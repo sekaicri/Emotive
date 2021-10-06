@@ -13,7 +13,7 @@ public class RandomScene : MonoBehaviour
     private Alert alert;
     private int ran;
     private int i = 0;
-
+    public bool init;
 
     public void RandomStart() {
         i = 0;
@@ -28,9 +28,14 @@ public class RandomScene : MonoBehaviour
      
         if (Incidents.images[num].stateRandom == false)
         {
+            num++;
             alert.PlaySound();
             list[num].SetActive(true);
             Incidents.images[num].stateRandom = true;
+            if (init) {
+                Incidents.images[num].button.onClick.Invoke();
+            }
+
             Incidents.Points1(Incidents.images[num].Fail);
         }
 
@@ -44,6 +49,8 @@ public class RandomScene : MonoBehaviour
 
     }
 
+
+    
     public void StopAll() {
         StopAllCoroutines();
     }

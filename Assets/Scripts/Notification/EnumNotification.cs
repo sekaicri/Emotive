@@ -6,6 +6,7 @@ public enum EnumNotification
 {  
    ButtonOk,
    Buttonx,
-   Load
-  
+   Load,
+   buttonw,
+   buttonw1
 }

@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     private int seconds;
 
     public int m, s, r;
-    
+
     [SerializeField]
     private Text timerText;
     [SerializeField]
@@ -23,8 +23,11 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private RandomScene randomScene;
 
+    [SerializeField]
+    private Ws_Client_S ws;
     public void StartTimer()
     {
+        
         m = minutes;
         s = seconds;
         WriteTimer(m, s);
@@ -71,16 +74,20 @@ public class Timer : MonoBehaviour
         }
 
         if (m == 9 && s == 58) {
+            randomScene.init = true;
           randomScene.RandomStart();
-
         }
+
         if (r == 10) {
+            randomScene.init = false;
             randomScene.RandomStart();
             r = 0;
         }
         WriteTimer(m, s);
         if (m == 0 && s == 0)
         {
+
+
         }
         else {
             Invoke("UpdateTimer", 1f);
