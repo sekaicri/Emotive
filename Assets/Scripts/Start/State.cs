@@ -59,7 +59,8 @@ public class State : MonoBehaviour
     public bool stateRandom = false;
     [SerializeField]
     private Alert alert;
-
+    [SerializeField]
+    private Text textfirst;
     public bool State1 { get => state; set => state = value; }
     public Zones CurrentZone { get => currentZone; set => currentZone = value; }
     public PrefabsIncidents PrefabsIncidents { get => prefabsIncidents; set => prefabsIncidents = value; }
@@ -113,7 +114,7 @@ public class State : MonoBehaviour
 
     public void IncidentsPlaces()
     {
-
+        textfirst.gameObject.SetActive(false);
         alert.PlaySound();
         SingletonInformation.Instance.probability = probability;
         cuadrillaText.text = "SOLUCIÓN REMOTA";
@@ -172,47 +173,47 @@ public class State : MonoBehaviour
         switch (details.severity)
         {
             case "BAJA":
-                if (probability < 3)
+                if (probability < 8)
                 {
-                    Complexity1 = "BAJA";
+                    complexity = "BAJA";
                 }
-                else if (probability < 5)
+                else if (probability < 10)
                 {
-                    Complexity1 = "MEDIA";
+                    complexity = "MEDIA";
                 }
                 else
                 {
-                    Complexity1 = "ALTA";
+                    complexity = "ALTA";
                 }
                 break;
             case "MEDIA":
-                if (probability < 2)
+                if (probability < 4)
                 {
-                    Complexity1 = "BAJA";
+                    complexity = "BAJA";
                 }
                 else if (probability < 8)
                 {
-                    Complexity1 = "MEDIA";
+                    complexity = "MEDIA";
                 }
                 else
                 {
-                    Complexity1 = "ALTA";
+                    complexity = "ALTA";
                 }
                 break;
 
             case "ALTA":
 
-                if (probability < 1)
+                if (probability < 2)
                 {
-                    Complexity1 = "BAJA";
+                    complexity = "BAJA";
                 }
-                else if (probability < 4)
+                else if (probability < 5)
                 {
-                    Complexity1 = "MEDIA";
+                    complexity = "MEDIA";
                 }
                 else
                 {
-                    Complexity1 = "ALTA";
+                    complexity = "ALTA";
                 }
                 break;
             default:

@@ -38,9 +38,9 @@ public class Patron : MonoBehaviour
 
     public void EraserAgain() {
 
-            Draw.Instance.eraserLine();
-            Num.Instance.temp = 0;
-        
+        Draw.Instance.eraserLine();
+        Num.Instance.temp = 0;
+
     }
 
 
@@ -61,7 +61,7 @@ public class Patron : MonoBehaviour
 
 
         layaout.constraintCount = patronView.x;
-        points.xy = patronView.xy;
+        points.xy = patronView.randomXY;
 
         for (int i = 0; i < patronView.xy; i++)
         {
@@ -72,7 +72,7 @@ public class Patron : MonoBehaviour
         }
     }
 
-   
+
 
 
     public void Check()
@@ -82,6 +82,7 @@ public class Patron : MonoBehaviour
         {
             foreach (PrefabsPoint item1 in item)
             {
+
                 string num = item1.num.text.ToString();
                 int tempt = int.Parse(num);
                 numSave.Add(tempt);
@@ -96,8 +97,8 @@ public class Patron : MonoBehaviour
                 temp++;
             }
         }
-
-        if (temp == patronView.xy)
+        Debug.Log(temp);
+        if (temp == patronView.randomXY)
         {
 
             patronView.Again = true;
@@ -187,7 +188,7 @@ public class Patron : MonoBehaviour
 
     public void Again() {
 
-      
+
         foreach (List<PrefabsPoint> item in planeList)
         {
             foreach (PrefabsPoint item1 in item)
@@ -201,5 +202,8 @@ public class Patron : MonoBehaviour
         Num.Instance.temp = 0;
     }
 
+    public void Eraser() {
+        Draw.Instance.eraserLine();
 
+    }
 }

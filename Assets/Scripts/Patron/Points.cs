@@ -17,6 +17,7 @@ public class Points : MonoBehaviour
 
     public void Patron( )
     {
+
         if (Num.Instance.temp < xy) {
 
             num.num.text = Num.Instance.temp.ToString();

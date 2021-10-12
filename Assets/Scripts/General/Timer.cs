@@ -22,9 +22,10 @@ public class Timer : MonoBehaviour
     private Alert alerta;
     [SerializeField]
     private RandomScene randomScene;
-
     [SerializeField]
     private Ws_Client_S ws;
+    [SerializeField]
+    private PatronView patron;
     public void StartTimer()
     {
         
@@ -73,26 +74,43 @@ public class Timer : MonoBehaviour
             }
         }
 
+        if (m <= 6)
+        {
+            patron.a = 5;
+            patron.b = 5;
+            randomScene.a = 2;
+            randomScene.b = 5;
+        }
+        else
+        {
+            patron.a = 4;
+            patron.b = 4;
+            randomScene.a = 0;
+            randomScene.b = 3;
+        }
+    
+
+
         if (m == 9 && s == 58) {
-            randomScene.init = true;
-          randomScene.RandomStart();
+            randomScene.RandomStart();
         }
 
-        if (r == 10) {
-            randomScene.init = false;
+        if (r == 25) {
             randomScene.RandomStart();
             r = 0;
         }
         WriteTimer(m, s);
+
+
         if (m == 0 && s == 0)
         {
-
-
         }
         else {
             Invoke("UpdateTimer", 1f);
         }
-    }
+
+        }
+     
     private void WriteTimer(int m, int s)
     {
         if (s < 10)

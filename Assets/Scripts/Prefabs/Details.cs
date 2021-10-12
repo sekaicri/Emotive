@@ -13,11 +13,11 @@ public class Details
     
     public void CreateDetails(string errors , string services)
     {
-        affected = Random.Range(1000, 4000);
+        affected = Random.Range(1000, 3500);
 
         error = errors;
         service = services;
-        if (affected < 2000) {
+        if (affected < 2300) {
             severity = "BAJA";
         }
         else if (affected < 2800) {

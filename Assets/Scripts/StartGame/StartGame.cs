@@ -37,6 +37,9 @@ public class StartGame : MonoBehaviour
     private ElementIdentifier hide;
     [SerializeField]
     private ElementIdentifier hide2;
+
+    [SerializeField]
+    private GameObject buttonMoni;
     public void StartGames()
     {
         InterfaceManager.Instance.ShowScreen(Show);
@@ -62,7 +65,7 @@ public class StartGame : MonoBehaviour
         teams.Eraser();
         cuadrilla.Eraser();
         score.StartPoints();
-
+        buttonMoni.gameObject.SetActive(false);
     }
  
     public void StartWitout() {

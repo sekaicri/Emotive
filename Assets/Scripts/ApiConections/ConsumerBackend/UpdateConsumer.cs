@@ -24,8 +24,19 @@ public class UpdateConsumer : MonoBehaviour
     private UnityEvent succeededLogin;
     [SerializeField]
     private LoginConsumer login;
+    [SerializeField]
+    private Text mail2;
+    [SerializeField]
+    private Text lastname2;
+    [SerializeField]
+    private Text name2;
 
-
+    public void Start1()
+    {
+        mail2.text = UserData.Instance.usuario.email;
+        lastname2.text = UserData.Instance.usuario.lastname;
+       name2.text = UserData.Instance.usuario.name;
+    }
     public void UpdatePetition()
     {
         mail = mail1.text;

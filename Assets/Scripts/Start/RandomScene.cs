@@ -13,29 +13,23 @@ public class RandomScene : MonoBehaviour
     private Alert alert;
     private int ran;
     private int i = 0;
-    public bool init;
-
+    public int a, b;
     public void RandomStart() {
         i = 0;
-        ran = Random.Range(0, 4);
+        ran = Random.Range(a, b);
         StartCoroutine(Generate());
     }
 
     public IEnumerator Generate()
     {
-        int num = Random.Range(0, 15);
+        int num = Random.Range(0,15);
 
      
         if (Incidents.images[num].stateRandom == false)
         {
-            num++;
             alert.PlaySound();
             list[num].SetActive(true);
             Incidents.images[num].stateRandom = true;
-            if (init) {
-                Incidents.images[num].button.onClick.Invoke();
-            }
-
             Incidents.Points1(Incidents.images[num].Fail);
         }
 

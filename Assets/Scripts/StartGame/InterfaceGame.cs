@@ -44,11 +44,11 @@ public class InterfaceGame : MonoBehaviour
         {
 
             case "BAJA":
-                if (probability < 3)
+                if (probability < 8)
                 {
                     complexity = "BAJA";
                 }
-                else if (probability < 5)
+                else if (probability < 10)
                 {
                     complexity = "MEDIA";
                 }
@@ -58,7 +58,7 @@ public class InterfaceGame : MonoBehaviour
                 }
                 break;
             case "MEDIA":
-                if (probability < 2)
+                if (probability < 4)
                 {
                     complexity = "BAJA";
                 }
@@ -74,11 +74,11 @@ public class InterfaceGame : MonoBehaviour
 
             case "ALTA":
 
-                if (probability < 1)
+                if (probability < 2)
                 {
                     complexity = "BAJA";
                 }
-                else if (probability < 4)
+                else if (probability < 5)
                 {
                     complexity = "MEDIA";
                 }

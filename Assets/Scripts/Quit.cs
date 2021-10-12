@@ -10,4 +10,12 @@ public class    Quit : MonoBehaviour
     {
         ws.Stopservice();
     }
+
+
+    public void CloseBye()
+    {
+        Debug.Log("Fue un place amigo");
+        Application.Quit();
+    }
+
 }

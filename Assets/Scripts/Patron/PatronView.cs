@@ -17,8 +17,6 @@ public class PatronView : MonoBehaviour
     private PrefabsPoint prefabPoint;
     [HideInInspector]
     public int x = 0, y = 0;
-
-
     [SerializeField]
     public Patron patron;
 
@@ -26,6 +24,7 @@ public class PatronView : MonoBehaviour
     public Transform transformPatron;
 
     public int xy;
+    public int a , b;
 
     public List<List<GameObject>> planeList = new List<List<GameObject>>();
 
@@ -38,9 +37,8 @@ public class PatronView : MonoBehaviour
 
     public List<PrefabsPoint> listNew = new List<PrefabsPoint>();
 
-
     private bool again = false;
-
+    public int randomXY;
     public bool Again { get => again; set => again = value; }
 
     [ContextMenu("holi")]
@@ -48,13 +46,15 @@ public class PatronView : MonoBehaviour
     {
         StopAllCoroutines();
         Num.Instance.temp = 0;
-        x = Random.Range(3, 5);
-        y = Random.Range(3, 5);
+        x = Random.Range(3, a);
+        y = Random.Range(3, b);
+
 //#if UNITY_EDITOR
 //        x = 2;
 //        y = 2;
 //#endif
         xy = x * y;
+        randomXY = Random.Range(xy/2 ,xy+1);
         layaout.constraintCount = x;
         Rando8(severity);
         lineRenderer.Points = new Vector2[1];
@@ -148,12 +148,12 @@ public class PatronView : MonoBehaviour
             y++;
 
         }
-        while (y < list.Count);
+        while (y < randomXY);
 
         point1 = new Vector2(listNew[0].point.GetComponent<RectTransform>().localPosition.x, listNew[0].point.GetComponent<RectTransform>().localPosition.y);
         lineRenderer.Points[0] = point1;
 
-        for (int x = 0; x < (listNew.Count-1); x++)
+        for (int x = 0; x < (randomXY - 1); x++)
         {
             orig = new Vector2(listNew[x].point.GetComponent<RectTransform>().localPosition.x, listNew[x].point.GetComponent<RectTransform>().localPosition.y);
             orig2 = new Vector2(listNew[x + 1].point.GetComponent<RectTransform>().localPosition.x, listNew[x + 1].point.GetComponent<RectTransform>().localPosition.y);
@@ -178,9 +178,9 @@ public class PatronView : MonoBehaviour
                 }
            
             }
-            if (x + 2 == list.Count)
+            if (x + 2 == randomXY)
             {
-                listNew[listNew.Count - 1].point.interactable = false;
+                listNew[randomXY - 1].point.interactable = false;
                 yield return new WaitForSeconds(0.2f);
             }
         }
@@ -212,6 +212,7 @@ public class PatronView : MonoBehaviour
             numSave.Add(posicionAleatoria);
         }
 
+    
         save = numSave;
         CreatePlane(severity);
     }
