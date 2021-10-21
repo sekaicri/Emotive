@@ -78,8 +78,8 @@ public class Timer : MonoBehaviour
         {
             patron.a = 5;
             patron.b = 5;
-            randomScene.a = 2;
-            randomScene.b = 5;
+            randomScene.a = 1;
+            randomScene.b = 4;
         }
         else
         {
@@ -92,10 +92,11 @@ public class Timer : MonoBehaviour
 
 
         if (m == 9 && s == 58) {
+            randomScene.a = 1;
             randomScene.RandomStart();
         }
 
-        if (r == 25) {
+        if (r == 30) {
             randomScene.RandomStart();
             r = 0;
         }

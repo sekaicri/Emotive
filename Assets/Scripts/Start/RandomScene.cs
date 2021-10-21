@@ -14,17 +14,35 @@ public class RandomScene : MonoBehaviour
     private int ran;
     private int i = 0;
     public int a, b;
+    private List<int> temp = new List<int>();
     public void RandomStart() {
         i = 0;
         ran = Random.Range(a, b);
+
         StartCoroutine(Generate());
     }
 
     public IEnumerator Generate()
     {
+        
         int num = Random.Range(0,15);
 
-     
+        if (temp.Contains(num)) {
+            if (temp.Count == 15)
+            {
+                yield return null;
+            }
+            else {
+                StartCoroutine(Generate());
+            }
+          
+        }
+        else {
+
+            temp.Add(num);
+        }
+
+        
         if (Incidents.images[num].stateRandom == false)
         {
             alert.PlaySound();
@@ -49,5 +67,9 @@ public class RandomScene : MonoBehaviour
         StopAllCoroutines();
     }
 
+    public void Eraser()
+    {
+        temp.Clear();
+    }
 
 }
